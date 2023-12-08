@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91687613635",
+    "project_id": "album-generator-341e9",
+    "storage_bucket": "album-generator-341e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91687613635:android:a6e04305b164dcd0975e76",
+        "android_client_info": {
+          "package_name": "com.example.album_generator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhz3hWo6SpqAsVrUvOZBNnwmkIxNOVkb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
