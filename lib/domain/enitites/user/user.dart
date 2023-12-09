@@ -5,21 +5,24 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class User with _$User {
-  const factory User({
-    String? id,
+class UserModel with _$UserModel {
+  const factory UserModel({
+    required String id,
     required String username,
     required String email,
+    String? avatar,
     int? reviewCount,
-    List<int>? listenedAlbums,
+    List<String>? listenedAlbums,
   }) = _User;
 
-  static User getEmpty() {
-    return const User(
+  static UserModel getEmpty() {
+    return const UserModel(
+      id: 'id',
       username: 'ivan',
       email: 'ivan@gmail.com',
     );
   }
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }

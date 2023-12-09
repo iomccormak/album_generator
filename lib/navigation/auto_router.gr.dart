@@ -14,48 +14,53 @@
 import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
 
-import '../presentation/pages/album_page/album_page.dart' as _i2;
-import '../presentation/pages/info_page/info_page.dart' as _i3;
-import '../presentation/pages/login_page/login_page.dart' as _i4;
-import '../presentation/pages/main_page/main_page.dart' as _i5;
+import '../presentation/pages/album_page/album_page.dart' as _i3;
+import '../presentation/pages/info_page/info_page.dart' as _i4;
+import '../presentation/pages/main_page/main_page.dart' as _i1;
 import '../presentation/pages/profile_page/profile_page.dart' as _i6;
-import '../presentation/pages/registration_page/registration_page.dart' as _i7;
-import '../presentation/pages/start_page/start_page.dart' as _i1;
+import '../presentation/pages/sign_in_page/sign_in_page.dart' as _i5;
+import '../presentation/pages/sign_up_page/sign_up_page.dart' as _i7;
+import '../presentation/pages/start_page/start_page.dart' as _i2;
+import 'auth_guard.dart' as _i10;
 
 class AutoRouter extends _i8.RootStackRouter {
-  AutoRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+  AutoRouter({
+    _i9.GlobalKey<_i9.NavigatorState>? navigatorKey,
+    required this.authGuard,
+  }) : super(navigatorKey);
+
+  final _i10.AuthGuard authGuard;
 
   @override
   final Map<String, _i8.PageFactory> pagesMap = {
+    MainRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i1.MainPage(),
+      );
+    },
     StartRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i1.StartPage(),
+        child: const _i2.StartPage(),
       );
     },
     AlbumRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i2.AlbumPage(),
+        child: const _i3.AlbumPage(),
       );
     },
     InfoRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.InfoPage(),
+        child: const _i4.InfoPage(),
       );
     },
-    LoginRoute.name: (routeData) {
+    SignInRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.LoginPage(),
-      );
-    },
-    MainRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i5.MainPage(),
+        child: const _i5.SignInPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -64,10 +69,10 @@ class AutoRouter extends _i8.RootStackRouter {
         child: const _i6.ProfilePage(),
       );
     },
-    RegistrationRoute.name: (routeData) {
+    SignUpRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.RegistrationPage(),
+        child: const _i7.SignUpPage(),
       );
     },
   };
@@ -75,8 +80,13 @@ class AutoRouter extends _i8.RootStackRouter {
   @override
   List<_i8.RouteConfig> get routes => [
         _i8.RouteConfig(
-          StartRoute.name,
+          MainRoute.name,
           path: '/',
+          guards: [authGuard],
+        ),
+        _i8.RouteConfig(
+          StartRoute.name,
+          path: '/start-page',
         ),
         _i8.RouteConfig(
           AlbumRoute.name,
@@ -87,38 +97,46 @@ class AutoRouter extends _i8.RootStackRouter {
           path: '/info-page',
         ),
         _i8.RouteConfig(
-          LoginRoute.name,
-          path: '/login-page',
-        ),
-        _i8.RouteConfig(
-          MainRoute.name,
-          path: '/main-page',
+          SignInRoute.name,
+          path: '/sign-in-page',
         ),
         _i8.RouteConfig(
           ProfileRoute.name,
           path: '/profile-page',
         ),
         _i8.RouteConfig(
-          RegistrationRoute.name,
-          path: '/registration-page',
+          SignUpRoute.name,
+          path: '/sign-up-page',
         ),
       ];
 }
 
 /// generated route for
-/// [_i1.StartPage]
+/// [_i1.MainPage]
+class MainRoute extends _i8.PageRouteInfo<void> {
+  const MainRoute()
+      : super(
+          MainRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'MainRoute';
+}
+
+/// generated route for
+/// [_i2.StartPage]
 class StartRoute extends _i8.PageRouteInfo<void> {
   const StartRoute()
       : super(
           StartRoute.name,
-          path: '/',
+          path: '/start-page',
         );
 
   static const String name = 'StartRoute';
 }
 
 /// generated route for
-/// [_i2.AlbumPage]
+/// [_i3.AlbumPage]
 class AlbumRoute extends _i8.PageRouteInfo<void> {
   const AlbumRoute()
       : super(
@@ -130,7 +148,7 @@ class AlbumRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.InfoPage]
+/// [_i4.InfoPage]
 class InfoRoute extends _i8.PageRouteInfo<void> {
   const InfoRoute()
       : super(
@@ -142,27 +160,15 @@ class InfoRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.LoginPage]
-class LoginRoute extends _i8.PageRouteInfo<void> {
-  const LoginRoute()
+/// [_i5.SignInPage]
+class SignInRoute extends _i8.PageRouteInfo<void> {
+  const SignInRoute()
       : super(
-          LoginRoute.name,
-          path: '/login-page',
+          SignInRoute.name,
+          path: '/sign-in-page',
         );
 
-  static const String name = 'LoginRoute';
-}
-
-/// generated route for
-/// [_i5.MainPage]
-class MainRoute extends _i8.PageRouteInfo<void> {
-  const MainRoute()
-      : super(
-          MainRoute.name,
-          path: '/main-page',
-        );
-
-  static const String name = 'MainRoute';
+  static const String name = 'SignInRoute';
 }
 
 /// generated route for
@@ -178,13 +184,13 @@ class ProfileRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.RegistrationPage]
-class RegistrationRoute extends _i8.PageRouteInfo<void> {
-  const RegistrationRoute()
+/// [_i7.SignUpPage]
+class SignUpRoute extends _i8.PageRouteInfo<void> {
+  const SignUpRoute()
       : super(
-          RegistrationRoute.name,
-          path: '/registration-page',
+          SignUpRoute.name,
+          path: '/sign-up-page',
         );
 
-  static const String name = 'RegistrationRoute';
+  static const String name = 'SignUpRoute';
 }

@@ -5,7 +5,7 @@ class MainState with _$MainState {
   const factory MainState.initial() = Initial;
   const factory MainState.loading() = Loading;
   const factory MainState.loaded(
-    User currentUser,
+    UserModel currentUser,
     Album album,
   ) = Loaded;
 }

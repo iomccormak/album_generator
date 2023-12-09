@@ -1,4 +1,5 @@
 import 'package:album_generator/di/locator.dart';
+import 'package:album_generator/navigation/auth_guard.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  final autoRouter = AutoRouter();
+  final autoRouter = AutoRouter(authGuard: AuthGuard());
 
   @override
   void initState() {

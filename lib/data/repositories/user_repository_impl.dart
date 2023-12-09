@@ -1,4 +1,3 @@
-
 import 'package:album_generator/data/datasources/user/user_data_source.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/domain/repositories/user_repository.dart';
@@ -14,8 +13,7 @@ class UserRepositoryImpl extends UserRepository {
   );
 
   @override
-  Future<User> getCurrentUser() {
-    // TODO: implement getCurrentUser
-    throw UnimplementedError();
+  Future<UserModel> getCurrentUser() async {
+    return await _userDataSource.getCurrentUser();
   }
 }

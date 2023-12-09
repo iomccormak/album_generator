@@ -24,10 +24,10 @@ class MainPage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToProfile: () {
-              context.router.push(ProfileRoute());
+              context.router.push(const ProfileRoute());
             },
             navToSettings: () {
-              context.router.push(InfoRoute());
+              context.router.push(const InfoRoute());
             },
             navToNext: () {},
             error: () {
@@ -51,13 +51,13 @@ class MainPage extends StatelessWidget {
                           color: Colors.grey,
                         ),
                         onPressed: () {
-                           context.router.push(InfoRoute());
+                           context.router.push(const InfoRoute());
                         },
                       ),
                     ],
                     leading: InkWell(
                       onTap: () {
-                        context.router.push(ProfileRoute());
+                        context.router.push(const ProfileRoute());
                       },
                       child: Padding(
                         padding: EdgeInsets.all(16.r),

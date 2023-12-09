@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'main_bloc.dart';
+part of 'profile_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,57 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MainEvent {
+mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() save,
+    required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? save,
+    TResult? Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? save,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(Save value) save,
+    required TResult Function(SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(Save value)? save,
+    TResult? Function(SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(Save value)? save,
+    TResult Function(SignOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MainEventCopyWith<$Res> {
-  factory $MainEventCopyWith(MainEvent value, $Res Function(MainEvent) then) =
-      _$MainEventCopyWithImpl<$Res, MainEvent>;
+abstract class $ProfileEventCopyWith<$Res> {
+  factory $ProfileEventCopyWith(
+          ProfileEvent value, $Res Function(ProfileEvent) then) =
+      _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
 }
 
 /// @nodoc
-class _$MainEventCopyWithImpl<$Res, $Val extends MainEvent>
-    implements $MainEventCopyWith<$Res> {
-  _$MainEventCopyWithImpl(this._value, this._then);
+class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
+    implements $ProfileEventCopyWith<$Res> {
+  _$ProfileEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -82,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$MainEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$ProfileEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -96,7 +97,7 @@ class _$StartedImpl implements Started {
 
   @override
   String toString() {
-    return 'MainEvent.started()';
+    return 'ProfileEvent.started()';
   }
 
   @override
@@ -112,7 +113,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() save,
+    required TResult Function() signOut,
   }) {
     return started();
   }
@@ -121,7 +122,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? save,
+    TResult? Function()? signOut,
   }) {
     return started?.call();
   }
@@ -130,7 +131,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? save,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -143,7 +144,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(Save value) save,
+    required TResult Function(SignOut value) signOut,
   }) {
     return started(this);
   }
@@ -152,7 +153,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(Save value)? save,
+    TResult? Function(SignOut value)? signOut,
   }) {
     return started?.call(this);
   }
@@ -161,7 +162,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(Save value)? save,
+    TResult Function(SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -171,39 +172,40 @@ class _$StartedImpl implements Started {
   }
 }
 
-abstract class Started implements MainEvent {
+abstract class Started implements ProfileEvent {
   const factory Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$SaveImplCopyWith<$Res> {
-  factory _$$SaveImplCopyWith(
-          _$SaveImpl value, $Res Function(_$SaveImpl) then) =
-      __$$SaveImplCopyWithImpl<$Res>;
+abstract class _$$SignOutImplCopyWith<$Res> {
+  factory _$$SignOutImplCopyWith(
+          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
+      __$$SignOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SaveImplCopyWithImpl<$Res>
-    extends _$MainEventCopyWithImpl<$Res, _$SaveImpl>
-    implements _$$SaveImplCopyWith<$Res> {
-  __$$SaveImplCopyWithImpl(_$SaveImpl _value, $Res Function(_$SaveImpl) _then)
+class __$$SignOutImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$SignOutImpl>
+    implements _$$SignOutImplCopyWith<$Res> {
+  __$$SignOutImplCopyWithImpl(
+      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SaveImpl implements Save {
-  const _$SaveImpl();
+class _$SignOutImpl implements SignOut {
+  const _$SignOutImpl();
 
   @override
   String toString() {
-    return 'MainEvent.save()';
+    return 'ProfileEvent.signOut()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SaveImpl);
+        (other.runtimeType == runtimeType && other is _$SignOutImpl);
   }
 
   @override
@@ -213,29 +215,29 @@ class _$SaveImpl implements Save {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() save,
+    required TResult Function() signOut,
   }) {
-    return save();
+    return signOut();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? save,
+    TResult? Function()? signOut,
   }) {
-    return save?.call();
+    return signOut?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? save,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save();
+    if (signOut != null) {
+      return signOut();
     }
     return orElse();
   }
@@ -244,59 +246,59 @@ class _$SaveImpl implements Save {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(Save value) save,
+    required TResult Function(SignOut value) signOut,
   }) {
-    return save(this);
+    return signOut(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(Save value)? save,
+    TResult? Function(SignOut value)? signOut,
   }) {
-    return save?.call(this);
+    return signOut?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(Save value)? save,
+    TResult Function(SignOut value)? signOut,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save(this);
+    if (signOut != null) {
+      return signOut(this);
     }
     return orElse();
   }
 }
 
-abstract class Save implements MainEvent {
-  const factory Save() = _$SaveImpl;
+abstract class SignOut implements ProfileEvent {
+  const factory SignOut() = _$SignOutImpl;
 }
 
 /// @nodoc
-mixin _$MainState {
+mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel user) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel user)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -325,15 +327,16 @@ mixin _$MainState {
 }
 
 /// @nodoc
-abstract class $MainStateCopyWith<$Res> {
-  factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
-      _$MainStateCopyWithImpl<$Res, MainState>;
+abstract class $ProfileStateCopyWith<$Res> {
+  factory $ProfileStateCopyWith(
+          ProfileState value, $Res Function(ProfileState) then) =
+      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
 }
 
 /// @nodoc
-class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
-    implements $MainStateCopyWith<$Res> {
-  _$MainStateCopyWithImpl(this._value, this._then);
+class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
+    implements $ProfileStateCopyWith<$Res> {
+  _$ProfileStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -350,7 +353,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$MainStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ProfileStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -364,7 +367,7 @@ class _$InitialImpl implements Initial {
 
   @override
   String toString() {
-    return 'MainState.initial()';
+    return 'ProfileState.initial()';
   }
 
   @override
@@ -381,7 +384,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel user) loaded,
   }) {
     return initial();
   }
@@ -391,7 +394,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel user)? loaded,
   }) {
     return initial?.call();
   }
@@ -401,7 +404,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -445,7 +448,7 @@ class _$InitialImpl implements Initial {
   }
 }
 
-abstract class Initial implements MainState {
+abstract class Initial implements ProfileState {
   const factory Initial() = _$InitialImpl;
 }
 
@@ -458,7 +461,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$MainStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -472,7 +475,7 @@ class _$LoadingImpl implements Loading {
 
   @override
   String toString() {
-    return 'MainState.loading()';
+    return 'ProfileState.loading()';
   }
 
   @override
@@ -489,7 +492,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel user) loaded,
   }) {
     return loading();
   }
@@ -499,7 +502,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel user)? loaded,
   }) {
     return loading?.call();
   }
@@ -509,7 +512,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -553,7 +556,7 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements MainState {
+abstract class Loading implements ProfileState {
   const factory Loading() = _$LoadingImpl;
 }
 
@@ -563,15 +566,14 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel currentUser, Album album});
+  $Res call({UserModel user});
 
-  $UserModelCopyWith<$Res> get currentUser;
-  $AlbumCopyWith<$Res> get album;
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$MainStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ProfileStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -580,34 +582,21 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentUser = null,
-    Object? album = null,
+    Object? user = null,
   }) {
     return _then(_$LoadedImpl(
-      null == currentUser
-          ? _value.currentUser
-          : currentUser // ignore: cast_nullable_to_non_nullable
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      null == album
-          ? _value.album
-          : album // ignore: cast_nullable_to_non_nullable
-              as Album,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get currentUser {
-    return $UserModelCopyWith<$Res>(_value.currentUser, (value) {
-      return _then(_value.copyWith(currentUser: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AlbumCopyWith<$Res> get album {
-    return $AlbumCopyWith<$Res>(_value.album, (value) {
-      return _then(_value.copyWith(album: value));
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
     });
   }
 }
@@ -615,16 +604,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(this.currentUser, this.album);
+  const _$LoadedImpl(this.user);
 
   @override
-  final UserModel currentUser;
-  @override
-  final Album album;
+  final UserModel user;
 
   @override
   String toString() {
-    return 'MainState.loaded(currentUser: $currentUser, album: $album)';
+    return 'ProfileState.loaded(user: $user)';
   }
 
   @override
@@ -632,13 +619,11 @@ class _$LoadedImpl implements Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.currentUser, currentUser) ||
-                other.currentUser == currentUser) &&
-            (identical(other.album, album) || other.album == album));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentUser, album);
+  int get hashCode => Object.hash(runtimeType, user);
 
   @JsonKey(ignore: true)
   @override
@@ -651,9 +636,9 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel user) loaded,
   }) {
-    return loaded(currentUser, album);
+    return loaded(user);
   }
 
   @override
@@ -661,9 +646,9 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel user)? loaded,
   }) {
-    return loaded?.call(currentUser, album);
+    return loaded?.call(user);
   }
 
   @override
@@ -671,11 +656,11 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(currentUser, album);
+      return loaded(user);
     }
     return orElse();
   }
@@ -715,65 +700,51 @@ class _$LoadedImpl implements Loaded {
   }
 }
 
-abstract class Loaded implements MainState {
-  const factory Loaded(final UserModel currentUser, final Album album) =
-      _$LoadedImpl;
+abstract class Loaded implements ProfileState {
+  const factory Loaded(final UserModel user) = _$LoadedImpl;
 
-  UserModel get currentUser;
-  Album get album;
+  UserModel get user;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$MainCommand {
+mixin _$ProfileCommand {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() navToProfile,
-    required TResult Function() navToSettings,
-    required TResult Function() navToNext,
+    required TResult Function() navToStartPage,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToProfile,
-    TResult? Function()? navToSettings,
-    TResult? Function()? navToNext,
+    TResult? Function()? navToStartPage,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToProfile,
-    TResult Function()? navToSettings,
-    TResult Function()? navToNext,
+    TResult Function()? navToStartPage,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NavToProfile value) navToProfile,
-    required TResult Function(NavToSettings value) navToSettings,
-    required TResult Function(NavToNext value) navToNext,
+    required TResult Function(NavToStartPage value) navToStartPage,
     required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToProfile value)? navToProfile,
-    TResult? Function(NavToSettings value)? navToSettings,
-    TResult? Function(NavToNext value)? navToNext,
+    TResult? Function(NavToStartPage value)? navToStartPage,
     TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToProfile value)? navToProfile,
-    TResult Function(NavToSettings value)? navToSettings,
-    TResult Function(NavToNext value)? navToNext,
+    TResult Function(NavToStartPage value)? navToStartPage,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
@@ -781,16 +752,16 @@ mixin _$MainCommand {
 }
 
 /// @nodoc
-abstract class $MainCommandCopyWith<$Res> {
-  factory $MainCommandCopyWith(
-          MainCommand value, $Res Function(MainCommand) then) =
-      _$MainCommandCopyWithImpl<$Res, MainCommand>;
+abstract class $ProfileCommandCopyWith<$Res> {
+  factory $ProfileCommandCopyWith(
+          ProfileCommand value, $Res Function(ProfileCommand) then) =
+      _$ProfileCommandCopyWithImpl<$Res, ProfileCommand>;
 }
 
 /// @nodoc
-class _$MainCommandCopyWithImpl<$Res, $Val extends MainCommand>
-    implements $MainCommandCopyWith<$Res> {
-  _$MainCommandCopyWithImpl(this._value, this._then);
+class _$ProfileCommandCopyWithImpl<$Res, $Val extends ProfileCommand>
+    implements $ProfileCommandCopyWith<$Res> {
+  _$ProfileCommandCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -799,35 +770,35 @@ class _$MainCommandCopyWithImpl<$Res, $Val extends MainCommand>
 }
 
 /// @nodoc
-abstract class _$$NavToProfileImplCopyWith<$Res> {
-  factory _$$NavToProfileImplCopyWith(
-          _$NavToProfileImpl value, $Res Function(_$NavToProfileImpl) then) =
-      __$$NavToProfileImplCopyWithImpl<$Res>;
+abstract class _$$NavToStartPageImplCopyWith<$Res> {
+  factory _$$NavToStartPageImplCopyWith(_$NavToStartPageImpl value,
+          $Res Function(_$NavToStartPageImpl) then) =
+      __$$NavToStartPageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NavToProfileImplCopyWithImpl<$Res>
-    extends _$MainCommandCopyWithImpl<$Res, _$NavToProfileImpl>
-    implements _$$NavToProfileImplCopyWith<$Res> {
-  __$$NavToProfileImplCopyWithImpl(
-      _$NavToProfileImpl _value, $Res Function(_$NavToProfileImpl) _then)
+class __$$NavToStartPageImplCopyWithImpl<$Res>
+    extends _$ProfileCommandCopyWithImpl<$Res, _$NavToStartPageImpl>
+    implements _$$NavToStartPageImplCopyWith<$Res> {
+  __$$NavToStartPageImplCopyWithImpl(
+      _$NavToStartPageImpl _value, $Res Function(_$NavToStartPageImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$NavToProfileImpl implements NavToProfile {
-  const _$NavToProfileImpl();
+class _$NavToStartPageImpl implements NavToStartPage {
+  const _$NavToStartPageImpl();
 
   @override
   String toString() {
-    return 'MainCommand.navToProfile()';
+    return 'ProfileCommand.navToStartPage()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NavToProfileImpl);
+        (other.runtimeType == runtimeType && other is _$NavToStartPageImpl);
   }
 
   @override
@@ -836,36 +807,30 @@ class _$NavToProfileImpl implements NavToProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() navToProfile,
-    required TResult Function() navToSettings,
-    required TResult Function() navToNext,
+    required TResult Function() navToStartPage,
     required TResult Function() error,
   }) {
-    return navToProfile();
+    return navToStartPage();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToProfile,
-    TResult? Function()? navToSettings,
-    TResult? Function()? navToNext,
+    TResult? Function()? navToStartPage,
     TResult? Function()? error,
   }) {
-    return navToProfile?.call();
+    return navToStartPage?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToProfile,
-    TResult Function()? navToSettings,
-    TResult Function()? navToNext,
+    TResult Function()? navToStartPage,
     TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (navToProfile != null) {
-      return navToProfile();
+    if (navToStartPage != null) {
+      return navToStartPage();
     }
     return orElse();
   }
@@ -873,271 +838,37 @@ class _$NavToProfileImpl implements NavToProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NavToProfile value) navToProfile,
-    required TResult Function(NavToSettings value) navToSettings,
-    required TResult Function(NavToNext value) navToNext,
+    required TResult Function(NavToStartPage value) navToStartPage,
     required TResult Function(Error value) error,
   }) {
-    return navToProfile(this);
+    return navToStartPage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToProfile value)? navToProfile,
-    TResult? Function(NavToSettings value)? navToSettings,
-    TResult? Function(NavToNext value)? navToNext,
+    TResult? Function(NavToStartPage value)? navToStartPage,
     TResult? Function(Error value)? error,
   }) {
-    return navToProfile?.call(this);
+    return navToStartPage?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToProfile value)? navToProfile,
-    TResult Function(NavToSettings value)? navToSettings,
-    TResult Function(NavToNext value)? navToNext,
+    TResult Function(NavToStartPage value)? navToStartPage,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
-    if (navToProfile != null) {
-      return navToProfile(this);
+    if (navToStartPage != null) {
+      return navToStartPage(this);
     }
     return orElse();
   }
 }
 
-abstract class NavToProfile implements MainCommand {
-  const factory NavToProfile() = _$NavToProfileImpl;
-}
-
-/// @nodoc
-abstract class _$$NavToSettingsImplCopyWith<$Res> {
-  factory _$$NavToSettingsImplCopyWith(
-          _$NavToSettingsImpl value, $Res Function(_$NavToSettingsImpl) then) =
-      __$$NavToSettingsImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$NavToSettingsImplCopyWithImpl<$Res>
-    extends _$MainCommandCopyWithImpl<$Res, _$NavToSettingsImpl>
-    implements _$$NavToSettingsImplCopyWith<$Res> {
-  __$$NavToSettingsImplCopyWithImpl(
-      _$NavToSettingsImpl _value, $Res Function(_$NavToSettingsImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$NavToSettingsImpl implements NavToSettings {
-  const _$NavToSettingsImpl();
-
-  @override
-  String toString() {
-    return 'MainCommand.navToSettings()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NavToSettingsImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() navToProfile,
-    required TResult Function() navToSettings,
-    required TResult Function() navToNext,
-    required TResult Function() error,
-  }) {
-    return navToSettings();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToProfile,
-    TResult? Function()? navToSettings,
-    TResult? Function()? navToNext,
-    TResult? Function()? error,
-  }) {
-    return navToSettings?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToProfile,
-    TResult Function()? navToSettings,
-    TResult Function()? navToNext,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (navToSettings != null) {
-      return navToSettings();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NavToProfile value) navToProfile,
-    required TResult Function(NavToSettings value) navToSettings,
-    required TResult Function(NavToNext value) navToNext,
-    required TResult Function(Error value) error,
-  }) {
-    return navToSettings(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToProfile value)? navToProfile,
-    TResult? Function(NavToSettings value)? navToSettings,
-    TResult? Function(NavToNext value)? navToNext,
-    TResult? Function(Error value)? error,
-  }) {
-    return navToSettings?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToProfile value)? navToProfile,
-    TResult Function(NavToSettings value)? navToSettings,
-    TResult Function(NavToNext value)? navToNext,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (navToSettings != null) {
-      return navToSettings(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NavToSettings implements MainCommand {
-  const factory NavToSettings() = _$NavToSettingsImpl;
-}
-
-/// @nodoc
-abstract class _$$NavToNextImplCopyWith<$Res> {
-  factory _$$NavToNextImplCopyWith(
-          _$NavToNextImpl value, $Res Function(_$NavToNextImpl) then) =
-      __$$NavToNextImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$NavToNextImplCopyWithImpl<$Res>
-    extends _$MainCommandCopyWithImpl<$Res, _$NavToNextImpl>
-    implements _$$NavToNextImplCopyWith<$Res> {
-  __$$NavToNextImplCopyWithImpl(
-      _$NavToNextImpl _value, $Res Function(_$NavToNextImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$NavToNextImpl implements NavToNext {
-  const _$NavToNextImpl();
-
-  @override
-  String toString() {
-    return 'MainCommand.navToNext()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NavToNextImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() navToProfile,
-    required TResult Function() navToSettings,
-    required TResult Function() navToNext,
-    required TResult Function() error,
-  }) {
-    return navToNext();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToProfile,
-    TResult? Function()? navToSettings,
-    TResult? Function()? navToNext,
-    TResult? Function()? error,
-  }) {
-    return navToNext?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToProfile,
-    TResult Function()? navToSettings,
-    TResult Function()? navToNext,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (navToNext != null) {
-      return navToNext();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NavToProfile value) navToProfile,
-    required TResult Function(NavToSettings value) navToSettings,
-    required TResult Function(NavToNext value) navToNext,
-    required TResult Function(Error value) error,
-  }) {
-    return navToNext(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToProfile value)? navToProfile,
-    TResult? Function(NavToSettings value)? navToSettings,
-    TResult? Function(NavToNext value)? navToNext,
-    TResult? Function(Error value)? error,
-  }) {
-    return navToNext?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToProfile value)? navToProfile,
-    TResult Function(NavToSettings value)? navToSettings,
-    TResult Function(NavToNext value)? navToNext,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (navToNext != null) {
-      return navToNext(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NavToNext implements MainCommand {
-  const factory NavToNext() = _$NavToNextImpl;
+abstract class NavToStartPage implements ProfileCommand {
+  const factory NavToStartPage() = _$NavToStartPageImpl;
 }
 
 /// @nodoc
@@ -1149,7 +880,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$MainCommandCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ProfileCommandCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -1163,7 +894,7 @@ class _$ErrorImpl implements Error {
 
   @override
   String toString() {
-    return 'MainCommand.error()';
+    return 'ProfileCommand.error()';
   }
 
   @override
@@ -1178,9 +909,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() navToProfile,
-    required TResult Function() navToSettings,
-    required TResult Function() navToNext,
+    required TResult Function() navToStartPage,
     required TResult Function() error,
   }) {
     return error();
@@ -1189,9 +918,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToProfile,
-    TResult? Function()? navToSettings,
-    TResult? Function()? navToNext,
+    TResult? Function()? navToStartPage,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -1200,9 +927,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToProfile,
-    TResult Function()? navToSettings,
-    TResult Function()? navToNext,
+    TResult Function()? navToStartPage,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -1215,9 +940,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NavToProfile value) navToProfile,
-    required TResult Function(NavToSettings value) navToSettings,
-    required TResult Function(NavToNext value) navToNext,
+    required TResult Function(NavToStartPage value) navToStartPage,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -1226,9 +949,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToProfile value)? navToProfile,
-    TResult? Function(NavToSettings value)? navToSettings,
-    TResult? Function(NavToNext value)? navToNext,
+    TResult? Function(NavToStartPage value)? navToStartPage,
     TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -1237,9 +958,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToProfile value)? navToProfile,
-    TResult Function(NavToSettings value)? navToSettings,
-    TResult Function(NavToNext value)? navToNext,
+    TResult Function(NavToStartPage value)? navToStartPage,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -1250,6 +969,6 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements MainCommand {
+abstract class Error implements ProfileCommand {
   const factory Error() = _$ErrorImpl;
 }

@@ -34,8 +34,8 @@ class MainBloc extends Bloc<MainEvent, MainState>
   ) async {
     try {
       final album = await _albumRepository.fetchRandomAlbum();
-      log(album.toString());
-      emit(MainState.loaded(User.getEmpty(), album));
+      final user = await _userRepository.getCurrentUser();
+      emit(MainState.loaded(user, album));
     } catch (e) {
       log('Error in main bloc: $e');
       produceSideEffect(const MainCommand.error());
@@ -49,7 +49,7 @@ class MainBloc extends Bloc<MainEvent, MainState>
     try {
       emit(const MainState.loading());
       final album = await _albumRepository.fetchRandomAlbum();
-      emit(MainState.loaded(User.getEmpty(), album));
+      emit(MainState.loaded(UserModel.getEmpty(), album));
     } catch (e) {
       log('Error in main bloc: $e');
       produceSideEffect(const MainCommand.error());
