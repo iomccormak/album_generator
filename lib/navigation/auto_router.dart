@@ -1,6 +1,7 @@
 import 'package:album_generator/navigation/auth_guard.dart';
 import 'package:album_generator/presentation/pages/album_page/album_page.dart';
 import 'package:album_generator/presentation/pages/info_page/info_page.dart';
+import 'package:album_generator/presentation/pages/rate_album_page/rate_album_page.dart';
 import 'package:album_generator/presentation/pages/sign_in_page/sign_in_page.dart';
 import 'package:album_generator/presentation/pages/main_page/main_page.dart';
 import 'package:album_generator/presentation/pages/profile_page/profile_page.dart';
@@ -34,6 +35,9 @@ import 'package:auto_route/auto_route.dart';
     AutoRoute(
       page: SignUpPage,
     ),
+    AutoRoute(
+      page: RateAlbumPage,
+    )
   ],
 )
 class $AutoRouter {}

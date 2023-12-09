@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
           SignUpCommand>(
         listener: (context, sideEffect) {
           sideEffect.when(
-            navToHomePage: () => context.router.push(MainRoute()),
+            navToHomePage: () => context.router.push(const MainRoute()),
             validator: () {
               const snackBar = SnackBar(
                 content: Text('Enter valid values'),

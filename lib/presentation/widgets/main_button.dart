@@ -7,12 +7,14 @@ class MainButton extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
   int? paddingSymmetric;
+  Color? color;
 
   MainButton({
     super.key,
     required this.onTap,
     required this.text,
     this.paddingSymmetric = 40,
+    this.color = Colors.blue,
   });
 
   @override
@@ -22,7 +24,7 @@ class MainButton extends StatelessWidget {
       child: Ink(
         height: 60.h,
         width: double.infinity,
-        color: Colors.blue,
+        color: color,
         child: Align(
           alignment: Alignment.center,
           child: Text(

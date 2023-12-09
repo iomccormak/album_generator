@@ -1,4 +1,5 @@
 import 'package:album_generator/utils/app_text_styles.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,24 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: InkWell(
+          onTap: context.router.pop,
+          child: Padding(
+            padding: EdgeInsets.all(16.r),
+            child: const Icon(
+              Icons.arrow_back_outlined,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          70.h.heightBox,
+          20.h.heightBox,
           Text(
             'Info',
             style: AppTextStyles.title,
@@ -49,7 +64,7 @@ class InfoPage extends StatelessWidget {
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         //launchUrl(Uri.parse(
-                            //'https://en.wikipedia.org/wiki/1001_Albums_You_Must_Hear_Before_You_Die'));
+                        //'https://en.wikipedia.org/wiki/1001_Albums_You_Must_Hear_Before_You_Die'));
                       })
               ],
             ),
@@ -85,16 +100,5 @@ class InfoPage extends StatelessWidget {
         ],
       ).paddingSymmetric(horizontal: 30.w),
     );
-  }
-
-  Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri(scheme: "https", host: url);
-
-    if (!await launchUrl(
-      uri,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw "Exception: can't launch url";
-    }
   }
 }

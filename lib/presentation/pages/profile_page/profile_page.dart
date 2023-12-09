@@ -1,5 +1,4 @@
 import 'package:album_generator/di/locator.dart';
-import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/profile_page/bloc/profile_bloc.dart';
 import 'package:album_generator/utils/app_icons.dart';

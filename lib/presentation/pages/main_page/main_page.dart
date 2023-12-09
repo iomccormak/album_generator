@@ -18,6 +18,8 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool timeIsOver = false;
+
     return BlocProvider(
       create: (context) => getIt<MainBloc>()..add(const Started()),
       child: BlocSideEffectConsumer<MainBloc, MainBloc, MainState, MainCommand>(
@@ -51,7 +53,7 @@ class MainPage extends StatelessWidget {
                           color: Colors.grey,
                         ),
                         onPressed: () {
-                           context.router.push(const InfoRoute());
+                          context.router.push(const InfoRoute());
                         },
                       ),
                     ],
@@ -122,12 +124,22 @@ class MainPage extends StatelessWidget {
                         style: AppTextStyles.underTitle,
                       ),
                       30.h.heightBox,
+                      GestureDetector(
+                        onTap: () => context.read<MainBloc>().add(const Save()),
+                        child: Text(
+                          'next album',
+                          style: AppTextStyles.underTitle,
+                        ),
+                      ),
                       Expanded(
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: MainButton(
                             onTap: () {
-                              context.read<MainBloc>()..add(const Save());
+                              //context.read<MainBloc>().add(const Save());
+                              context.router.push(RateAlbumRoute(
+                                album: state.album,
+                              ));
                             },
                             text: 'Next',
                             paddingSymmetric: 30,

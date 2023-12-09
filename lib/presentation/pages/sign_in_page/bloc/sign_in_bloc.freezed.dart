@@ -16,43 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInEvent {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(String email, String password) signInClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(String email, String password)? signInClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(String email, String password)? signInClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
     required TResult Function(SignInClicked value) signInClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
     TResult? Function(SignInClicked value)? signInClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
     TResult Function(SignInClicked value)? signInClicked,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SignInEventCopyWith<SignInEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +61,8 @@ abstract class $SignInEventCopyWith<$Res> {
   factory $SignInEventCopyWith(
           SignInEvent value, $Res Function(SignInEvent) then) =
       _$SignInEventCopyWithImpl<$Res, SignInEvent>;
+  @useResult
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -72,115 +74,33 @@ class _$SignInEventCopyWithImpl<$Res, $Val extends SignInEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$SignInEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'SignInEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String email, String password) signInClicked,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String email, String password)? signInClicked,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String email, String password)? signInClicked,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(SignInClicked value) signInClicked,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(SignInClicked value)? signInClicked,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(SignInClicked value)? signInClicked,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Started implements SignInEvent {
-  const factory Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$SignInClickedImplCopyWith<$Res> {
+abstract class _$$SignInClickedImplCopyWith<$Res>
+    implements $SignInEventCopyWith<$Res> {
   factory _$$SignInClickedImplCopyWith(
           _$SignInClickedImpl value, $Res Function(_$SignInClickedImpl) then) =
       __$$SignInClickedImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String email, String password});
 }
@@ -249,7 +169,6 @@ class _$SignInClickedImpl implements SignInClicked {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(String email, String password) signInClicked,
   }) {
     return signInClicked(email, password);
@@ -258,7 +177,6 @@ class _$SignInClickedImpl implements SignInClicked {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(String email, String password)? signInClicked,
   }) {
     return signInClicked?.call(email, password);
@@ -267,7 +185,6 @@ class _$SignInClickedImpl implements SignInClicked {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(String email, String password)? signInClicked,
     required TResult orElse(),
   }) {
@@ -280,7 +197,6 @@ class _$SignInClickedImpl implements SignInClicked {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
     required TResult Function(SignInClicked value) signInClicked,
   }) {
     return signInClicked(this);
@@ -289,7 +205,6 @@ class _$SignInClickedImpl implements SignInClicked {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
     TResult? Function(SignInClicked value)? signInClicked,
   }) {
     return signInClicked?.call(this);
@@ -298,7 +213,6 @@ class _$SignInClickedImpl implements SignInClicked {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
     TResult Function(SignInClicked value)? signInClicked,
     required TResult orElse(),
   }) {
@@ -314,8 +228,11 @@ abstract class SignInClicked implements SignInEvent {
       {required final String email,
       required final String password}) = _$SignInClickedImpl;
 
+  @override
   String get email;
+  @override
   String get password;
+  @override
   @JsonKey(ignore: true)
   _$$SignInClickedImplCopyWith<_$SignInClickedImpl> get copyWith =>
       throw _privateConstructorUsedError;

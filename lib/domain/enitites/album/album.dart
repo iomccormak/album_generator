@@ -1,4 +1,3 @@
-import 'package:album_generator/domain/enitites/photo/photo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'album.freezed.dart';

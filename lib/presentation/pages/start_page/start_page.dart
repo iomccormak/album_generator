@@ -50,13 +50,13 @@ class StartPage extends StatelessWidget {
             ),
             30.h.heightBox,
             MainButton(
-              onTap: () => context.router.push(SignUpRoute()),
+              onTap: () => context.router.push(const SignUpRoute()),
               text: 'Get started',
             ),
             15.h.heightBox,
             InkWell(
               onTap: () {
-                context.router.push(SignInRoute());
+                context.router.push(const SignInRoute());
               },
               child: Ink(
                 height: 20.h,

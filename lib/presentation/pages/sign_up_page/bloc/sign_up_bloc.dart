@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:album_generator/domain/repositories/auth_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -19,17 +18,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState>
   SignUpBloc(
     this.authRepository,
   ) : super(const SignUpState.initial()) {
-    on<Started>(_onStarted);
     on<SignUpClicked>(_onSignUpClicked);
-  }
-
-  Future<void> _onStarted(
-    Started event,
-    Emitter<SignUpState> emit,
-  ) async {
-    try {} catch (e) {
-      produceSideEffect(const SignUpCommand.error(error: 'Started error'));
-    }
   }
 
   Future<void> _onSignUpClicked(

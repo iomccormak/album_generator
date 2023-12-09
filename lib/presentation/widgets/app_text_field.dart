@@ -11,6 +11,7 @@ class AppTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String? hintText;
   final TextInputAction? textInputAction;
+  final bool expanded;
   const AppTextField({
     super.key,
     this.width,
@@ -20,6 +21,7 @@ class AppTextField extends StatefulWidget {
     this.controller,
     this.hintText,
     this.textInputAction,
+    this.expanded = false,
   });
 
   @override

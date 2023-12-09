@@ -14,7 +14,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import '../data/datasources/album/album_data_source.dart' as _i11;
 import '../data/datasources/auth/auth_data_source.dart' as _i14;
 import '../data/datasources/photo/firebase_photo_data_source.dart' as _i17;
-import '../data/datasources/review/review_data_source.dart' as _i20;
+import '../data/datasources/review/review_data_source.dart' as _i21;
 import '../data/datasources/user/user_data_source.dart' as _i8;
 import '../data/repositories/album_repository_impl.dart' as _i13;
 import '../data/repositories/auth_repository_impl.dart' as _i16;
@@ -26,9 +26,11 @@ import '../domain/repositories/snackbar_manager.dart' as _i6;
 import '../domain/repositories/user_repository.dart' as _i9;
 import '../presentation/pages/main_page/bloc/main_bloc.dart' as _i18;
 import '../presentation/pages/profile_page/bloc/profile_bloc.dart' as _i19;
-import '../presentation/pages/sign_in_page/bloc/sign_in_bloc.dart' as _i21;
-import '../presentation/pages/sign_up_page/bloc/sign_up_bloc.dart' as _i22;
-import 'app_module.dart' as _i23; // ignore_for_file: unnecessary_lambdas
+import '../presentation/pages/rate_album_page/bloc/rate_album_bloc.dart'
+    as _i20;
+import '../presentation/pages/sign_in_page/bloc/sign_in_bloc.dart' as _i22;
+import '../presentation/pages/sign_up_page/bloc/sign_up_bloc.dart' as _i23;
+import 'app_module.dart' as _i24; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -75,15 +77,19 @@ _i1.GetIt $initGetIt(
         get<_i9.UserRepository>(),
         get<_i15.AuthRepository>(),
       ));
-  gh.singleton<_i20.ReviewDataSource>(_i20.ReviewDataSource(
+  gh.factory<_i20.RateAlbumBloc>(() => _i20.RateAlbumBloc(
+        get<_i12.AlbumRepository>(),
+        get<_i9.UserRepository>(),
+      ));
+  gh.singleton<_i21.ReviewDataSource>(_i21.ReviewDataSource(
     get<_i4.FirebaseFirestore>(),
     get<_i14.AuthDataSource>(),
   ));
-  gh.factory<_i21.SignInBloc>(
-      () => _i21.SignInBloc(get<_i15.AuthRepository>()));
-  gh.factory<_i22.SignUpBloc>(
-      () => _i22.SignUpBloc(get<_i15.AuthRepository>()));
+  gh.factory<_i22.SignInBloc>(
+      () => _i22.SignInBloc(get<_i15.AuthRepository>()));
+  gh.factory<_i23.SignUpBloc>(
+      () => _i23.SignUpBloc(get<_i15.AuthRepository>()));
   return get;
 }
 
-class _$AppModule extends _i23.AppModule {}
+class _$AppModule extends _i24.AppModule {}
