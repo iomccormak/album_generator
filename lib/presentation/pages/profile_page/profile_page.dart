@@ -103,11 +103,20 @@ class ProfilePage extends StatelessWidget {
                           state.user.username,
                           style: AppTextStyles.title,
                         ),
+                        20.h.heightBox,
+                        Text(
+                          state.user.reviewCount != null
+                              ? state.user.reviewCount.toString()
+                              : '0',
+                          style: AppTextStyles.title.copyWith(
+                            fontSize: 50.sp,
+                          ),
+                        ),
                         10.h.heightBox,
                         Text(
-                          state.user.email,
+                          'albums listened',
                           style: AppTextStyles.underTitle,
-                        ),
+                        )
                       ],
                     ),
                   ),

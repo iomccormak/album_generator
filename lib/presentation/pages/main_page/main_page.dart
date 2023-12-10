@@ -18,7 +18,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool timeIsOver = false;
 
     return BlocProvider(
       create: (context) => getIt<MainBloc>()..add(const Started()),
@@ -85,13 +84,7 @@ class MainPage extends StatelessWidget {
                                       const Color.fromARGB(255, 204, 204, 204),
                                 ),
                               )
-                            : BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color:
-                                      const Color.fromARGB(255, 222, 222, 222),
-                                ),
-                              ),
+                            : null,
                         alignment: Alignment.center,
                         child: state.album.cover != null
                             ? CachedNetworkImage(
@@ -123,25 +116,17 @@ class MainPage extends StatelessWidget {
                         state.album.released,
                         style: AppTextStyles.underTitle,
                       ),
-                      30.h.heightBox,
-                      GestureDetector(
-                        onTap: () => context.read<MainBloc>().add(const Save()),
-                        child: Text(
-                          'next album',
-                          style: AppTextStyles.underTitle,
-                        ),
-                      ),
                       Expanded(
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: MainButton(
                             onTap: () {
-                              //context.read<MainBloc>().add(const Save());
                               context.router.push(RateAlbumRoute(
                                 album: state.album,
+                                user: state.currentUser,
                               ));
                             },
-                            text: 'Next',
+                            text: 'Rate',
                             paddingSymmetric: 30,
                           ),
                         ).paddingOnly(bottom: 30.h),

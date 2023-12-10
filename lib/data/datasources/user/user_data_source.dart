@@ -22,4 +22,26 @@ class UserDataSource {
         .get();
     return UserModel.fromJson(json.data()!);
   }
+
+  Future<void> updateReviewCount() async {
+    final currentUser = await getCurrentUser();
+    if (currentUser.reviewCount != null) {
+      await _firebaseFirestore
+          .collection(FirebaseCollections.users)
+          .doc(currentUser.id)
+          .update({
+        'reviewCount': FieldValue.increment(1),
+      });
+    } else {
+      await _firebaseFirestore
+          .collection(FirebaseCollections.users)
+          .doc(currentUser.id)
+          .set(
+        {
+          'reviewCount': 1,
+        },
+        SetOptions(merge: true),
+      );
+    }
+  }
 }

@@ -18,33 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RateAlbumEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() rateAlbum,
+    required TResult Function(
+            String? description, double rating, String authorId, String albumId)
+        rateAlbum,
+    required TResult Function() didNotListen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? rateAlbum,
+    TResult? Function(String? description, double rating, String authorId,
+            String albumId)?
+        rateAlbum,
+    TResult? Function()? didNotListen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? rateAlbum,
+    TResult Function(String? description, double rating, String authorId,
+            String albumId)?
+        rateAlbum,
+    TResult Function()? didNotListen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RateAlbum value) rateAlbum,
+    required TResult Function(DidNotListen value) didNotListen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RateAlbum value)? rateAlbum,
+    TResult? Function(DidNotListen value)? didNotListen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RateAlbum value)? rateAlbum,
+    TResult Function(DidNotListen value)? didNotListen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -73,6 +85,9 @@ abstract class _$$RateAlbumImplCopyWith<$Res> {
   factory _$$RateAlbumImplCopyWith(
           _$RateAlbumImpl value, $Res Function(_$RateAlbumImpl) then) =
       __$$RateAlbumImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String? description, double rating, String authorId, String albumId});
 }
 
 /// @nodoc
@@ -82,51 +97,115 @@ class __$$RateAlbumImplCopyWithImpl<$Res>
   __$$RateAlbumImplCopyWithImpl(
       _$RateAlbumImpl _value, $Res Function(_$RateAlbumImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? description = freezed,
+    Object? rating = null,
+    Object? authorId = null,
+    Object? albumId = null,
+  }) {
+    return _then(_$RateAlbumImpl(
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
+      authorId: null == authorId
+          ? _value.authorId
+          : authorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albumId: null == albumId
+          ? _value.albumId
+          : albumId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RateAlbumImpl implements RateAlbum {
-  const _$RateAlbumImpl();
+  const _$RateAlbumImpl(
+      {this.description,
+      required this.rating,
+      required this.authorId,
+      required this.albumId});
+
+  @override
+  final String? description;
+  @override
+  final double rating;
+  @override
+  final String authorId;
+  @override
+  final String albumId;
 
   @override
   String toString() {
-    return 'RateAlbumEvent.rateAlbum()';
+    return 'RateAlbumEvent.rateAlbum(description: $description, rating: $rating, authorId: $authorId, albumId: $albumId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RateAlbumImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$RateAlbumImpl &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.authorId, authorId) ||
+                other.authorId == authorId) &&
+            (identical(other.albumId, albumId) || other.albumId == albumId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, description, rating, authorId, albumId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RateAlbumImplCopyWith<_$RateAlbumImpl> get copyWith =>
+      __$$RateAlbumImplCopyWithImpl<_$RateAlbumImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() rateAlbum,
+    required TResult Function(
+            String? description, double rating, String authorId, String albumId)
+        rateAlbum,
+    required TResult Function() didNotListen,
   }) {
-    return rateAlbum();
+    return rateAlbum(description, rating, authorId, albumId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? rateAlbum,
+    TResult? Function(String? description, double rating, String authorId,
+            String albumId)?
+        rateAlbum,
+    TResult? Function()? didNotListen,
   }) {
-    return rateAlbum?.call();
+    return rateAlbum?.call(description, rating, authorId, albumId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? rateAlbum,
+    TResult Function(String? description, double rating, String authorId,
+            String albumId)?
+        rateAlbum,
+    TResult Function()? didNotListen,
     required TResult orElse(),
   }) {
     if (rateAlbum != null) {
-      return rateAlbum();
+      return rateAlbum(description, rating, authorId, albumId);
     }
     return orElse();
   }
@@ -135,6 +214,7 @@ class _$RateAlbumImpl implements RateAlbum {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RateAlbum value) rateAlbum,
+    required TResult Function(DidNotListen value) didNotListen,
   }) {
     return rateAlbum(this);
   }
@@ -143,6 +223,7 @@ class _$RateAlbumImpl implements RateAlbum {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RateAlbum value)? rateAlbum,
+    TResult? Function(DidNotListen value)? didNotListen,
   }) {
     return rateAlbum?.call(this);
   }
@@ -151,6 +232,7 @@ class _$RateAlbumImpl implements RateAlbum {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RateAlbum value)? rateAlbum,
+    TResult Function(DidNotListen value)? didNotListen,
     required TResult orElse(),
   }) {
     if (rateAlbum != null) {
@@ -161,7 +243,127 @@ class _$RateAlbumImpl implements RateAlbum {
 }
 
 abstract class RateAlbum implements RateAlbumEvent {
-  const factory RateAlbum() = _$RateAlbumImpl;
+  const factory RateAlbum(
+      {final String? description,
+      required final double rating,
+      required final String authorId,
+      required final String albumId}) = _$RateAlbumImpl;
+
+  String? get description;
+  double get rating;
+  String get authorId;
+  String get albumId;
+  @JsonKey(ignore: true)
+  _$$RateAlbumImplCopyWith<_$RateAlbumImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DidNotListenImplCopyWith<$Res> {
+  factory _$$DidNotListenImplCopyWith(
+          _$DidNotListenImpl value, $Res Function(_$DidNotListenImpl) then) =
+      __$$DidNotListenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DidNotListenImplCopyWithImpl<$Res>
+    extends _$RateAlbumEventCopyWithImpl<$Res, _$DidNotListenImpl>
+    implements _$$DidNotListenImplCopyWith<$Res> {
+  __$$DidNotListenImplCopyWithImpl(
+      _$DidNotListenImpl _value, $Res Function(_$DidNotListenImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DidNotListenImpl implements DidNotListen {
+  const _$DidNotListenImpl();
+
+  @override
+  String toString() {
+    return 'RateAlbumEvent.didNotListen()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DidNotListenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String? description, double rating, String authorId, String albumId)
+        rateAlbum,
+    required TResult Function() didNotListen,
+  }) {
+    return didNotListen();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? description, double rating, String authorId,
+            String albumId)?
+        rateAlbum,
+    TResult? Function()? didNotListen,
+  }) {
+    return didNotListen?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? description, double rating, String authorId,
+            String albumId)?
+        rateAlbum,
+    TResult Function()? didNotListen,
+    required TResult orElse(),
+  }) {
+    if (didNotListen != null) {
+      return didNotListen();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RateAlbum value) rateAlbum,
+    required TResult Function(DidNotListen value) didNotListen,
+  }) {
+    return didNotListen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RateAlbum value)? rateAlbum,
+    TResult? Function(DidNotListen value)? didNotListen,
+  }) {
+    return didNotListen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RateAlbum value)? rateAlbum,
+    TResult Function(DidNotListen value)? didNotListen,
+    required TResult orElse(),
+  }) {
+    if (didNotListen != null) {
+      return didNotListen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DidNotListen implements RateAlbumEvent {
+  const factory DidNotListen() = _$DidNotListenImpl;
 }
 
 /// @nodoc
@@ -169,32 +371,38 @@ mixin _$RateAlbumState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -257,6 +465,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
   }) {
     return initial();
   }
@@ -265,6 +474,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
   }) {
     return initial?.call();
   }
@@ -273,6 +483,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -285,6 +496,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
   }) {
     return initial(this);
   }
@@ -293,6 +505,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -301,6 +514,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -312,6 +526,108 @@ class _$InitialImpl implements Initial {
 
 abstract class Initial implements RateAlbumState {
   const factory Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$RateAlbumStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'RateAlbumState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements RateAlbumState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc

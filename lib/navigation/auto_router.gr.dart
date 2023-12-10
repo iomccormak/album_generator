@@ -15,6 +15,7 @@ import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
 
 import '../domain/enitites/album/album.dart' as _i12;
+import '../domain/enitites/user/user.dart' as _i13;
 import '../presentation/pages/album_page/album_page.dart' as _i3;
 import '../presentation/pages/info_page/info_page.dart' as _i4;
 import '../presentation/pages/main_page/main_page.dart' as _i1;
@@ -84,6 +85,7 @@ class AutoRouter extends _i9.RootStackRouter {
         child: _i8.RateAlbumPage(
           key: args.key,
           album: args.album,
+          user: args.user,
         ),
       );
     },
@@ -217,12 +219,14 @@ class RateAlbumRoute extends _i9.PageRouteInfo<RateAlbumRouteArgs> {
   RateAlbumRoute({
     _i10.Key? key,
     required _i12.Album album,
+    required _i13.UserModel user,
   }) : super(
           RateAlbumRoute.name,
           path: '/rate-album-page',
           args: RateAlbumRouteArgs(
             key: key,
             album: album,
+            user: user,
           ),
         );
 
@@ -233,14 +237,17 @@ class RateAlbumRouteArgs {
   const RateAlbumRouteArgs({
     this.key,
     required this.album,
+    required this.user,
   });
 
   final _i10.Key? key;
 
   final _i12.Album album;
 
+  final _i13.UserModel user;
+
   @override
   String toString() {
-    return 'RateAlbumRouteArgs{key: $key, album: $album}';
+    return 'RateAlbumRouteArgs{key: $key, album: $album, user: $user}';
   }
 }

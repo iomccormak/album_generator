@@ -22,9 +22,9 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 mixin _$Review {
   String? get id => throw _privateConstructorUsedError;
   String get authorId => throw _privateConstructorUsedError;
-  int get rating => throw _privateConstructorUsedError;
+  double get rating => throw _privateConstructorUsedError;
   String get albumId => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   DateTime get timeStamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +40,9 @@ abstract class $ReviewCopyWith<$Res> {
   $Res call(
       {String? id,
       String authorId,
-      int rating,
+      double rating,
       String albumId,
-      String text,
+      String? description,
       DateTime timeStamp});
 }
 
@@ -63,7 +63,7 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
     Object? authorId = null,
     Object? rating = null,
     Object? albumId = null,
-    Object? text = null,
+    Object? description = freezed,
     Object? timeStamp = null,
   }) {
     return _then(_value.copyWith(
@@ -78,15 +78,15 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       albumId: null == albumId
           ? _value.albumId
           : albumId // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       timeStamp: null == timeStamp
           ? _value.timeStamp
           : timeStamp // ignore: cast_nullable_to_non_nullable
@@ -105,9 +105,9 @@ abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   $Res call(
       {String? id,
       String authorId,
-      int rating,
+      double rating,
       String albumId,
-      String text,
+      String? description,
       DateTime timeStamp});
 }
 
@@ -126,7 +126,7 @@ class __$$ReviewImplCopyWithImpl<$Res>
     Object? authorId = null,
     Object? rating = null,
     Object? albumId = null,
-    Object? text = null,
+    Object? description = freezed,
     Object? timeStamp = null,
   }) {
     return _then(_$ReviewImpl(
@@ -141,15 +141,15 @@ class __$$ReviewImplCopyWithImpl<$Res>
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       albumId: null == albumId
           ? _value.albumId
           : albumId // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       timeStamp: null == timeStamp
           ? _value.timeStamp
           : timeStamp // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ class _$ReviewImpl implements _Review {
       required this.authorId,
       required this.rating,
       required this.albumId,
-      this.text = '',
+      this.description,
       required this.timeStamp});
 
   factory _$ReviewImpl.fromJson(Map<String, dynamic> json) =>
@@ -177,18 +177,17 @@ class _$ReviewImpl implements _Review {
   @override
   final String authorId;
   @override
-  final int rating;
+  final double rating;
   @override
   final String albumId;
   @override
-  @JsonKey()
-  final String text;
+  final String? description;
   @override
   final DateTime timeStamp;
 
   @override
   String toString() {
-    return 'Review(id: $id, authorId: $authorId, rating: $rating, albumId: $albumId, text: $text, timeStamp: $timeStamp)';
+    return 'Review(id: $id, authorId: $authorId, rating: $rating, albumId: $albumId, description: $description, timeStamp: $timeStamp)';
   }
 
   @override
@@ -201,15 +200,16 @@ class _$ReviewImpl implements _Review {
                 other.authorId == authorId) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.albumId, albumId) || other.albumId == albumId) &&
-            (identical(other.text, text) || other.text == text) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.timeStamp, timeStamp) ||
                 other.timeStamp == timeStamp));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, authorId, rating, albumId, text, timeStamp);
+  int get hashCode => Object.hash(
+      runtimeType, id, authorId, rating, albumId, description, timeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -229,9 +229,9 @@ abstract class _Review implements Review {
   const factory _Review(
       {final String? id,
       required final String authorId,
-      required final int rating,
+      required final double rating,
       required final String albumId,
-      final String text,
+      final String? description,
       required final DateTime timeStamp}) = _$ReviewImpl;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$ReviewImpl.fromJson;
@@ -241,11 +241,11 @@ abstract class _Review implements Review {
   @override
   String get authorId;
   @override
-  int get rating;
+  double get rating;
   @override
   String get albumId;
   @override
-  String get text;
+  String? get description;
   @override
   DateTime get timeStamp;
   @override

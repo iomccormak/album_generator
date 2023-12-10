@@ -50,7 +50,11 @@ class _AppTextFieldState extends State<AppTextField> {
             child: TextFormField(
               controller: widget.controller,
               textInputAction: widget.textInputAction ?? TextInputAction.done,
-              maxLines: widget.obscure ? 1 : null,
+              maxLines: widget.obscure
+                  ? 1
+                  : widget.expanded
+                      ? 12
+                      : null,
               style: AppTextStyles.underTitle.copyWith(fontSize: 15.sp),
               obscureText: widget.obscure ? _obscureText : false,
               decoration: InputDecoration(

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:album_generator/data/firebase_collections.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,8 +12,6 @@ class AuthDataSource {
     this._firebaseAuth,
     this._firebaseFirestore,
   );
-
-  
 
   Future<void> emailSignUp({
     required String name,

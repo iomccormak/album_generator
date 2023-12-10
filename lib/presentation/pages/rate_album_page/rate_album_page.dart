@@ -1,5 +1,6 @@
 import 'package:album_generator/di/locator.dart';
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/rate_album_page/bloc/rate_album_bloc.dart';
 import 'package:album_generator/presentation/widgets/app_text_field.dart';
@@ -20,13 +21,16 @@ class RateAlbumPage extends StatelessWidget {
   const RateAlbumPage({
     super.key,
     required this.album,
+    required this.user,
   });
 
   final Album album;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
     TextEditingController descriptionController = TextEditingController();
+    double rated = 0.0;
 
     return BlocProvider(
       create: (context) => getIt<RateAlbumBloc>(),
@@ -61,148 +65,94 @@ class RateAlbumPage extends StatelessWidget {
                   ),
                 ),
               ),
-              body: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  20.h.heightBox,
-                  Row(
-                    children: [
-                      Container(
-                        width: 100.w,
-                        height: 100.h,
-                        decoration: album.cover == null
-                            ? BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color:
-                                      const Color.fromARGB(255, 204, 204, 204),
-                                ),
-                              )
-                            : BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color:
-                                      const Color.fromARGB(255, 222, 222, 222),
-                                ),
-                              ),
-                        alignment: Alignment.center,
-                        child: album.cover != null
-                            ? CachedNetworkImage(
-                                imageUrl: album.cover!,
-                                fit: BoxFit.cover,
-                              )
-                            : SizedBox(
-                                width: 170.w,
-                                height: 170.h,
-                                child: SvgPicture.asset(
-                                  AppIcons.albumPlaceholder,
-                                  color:
-                                      const Color.fromARGB(255, 221, 221, 221),
-                                ),
-                              ),
-                      ),
-                      20.w.widthBox,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 230.w,
-                            height: 70.h,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              album.name,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                              style: AppTextStyles.title.copyWith(
-                                fontSize: 25.sp,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            album.artist,
-                            style: AppTextStyles.underTitle.copyWith(
-                              fontSize: 15.sp,
-                            ),
-                          ),
-                          Text(
-                            album.released,
-                            style: AppTextStyles.underTitle.copyWith(
-                              fontSize: 15.sp,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  30.h.heightBox,
-                  const Divider(
-                    thickness: 0.3,
-                    color: Colors.black,
-                  ),
-                  30.h.heightBox,
-                  Text(
-                    'Rate this album',
-                    style: AppTextStyles.underTitle,
-                  ),
-                  30.h.heightBox,
-                  AppTextField(
-                    controller: descriptionController,
-                    expanded: true,
-                    hintText: 'Write a review (if you want)',
-                  ).paddingSymmetric(horizontal: 30.w),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
+              body: state is Initial
+                  ? SingleChildScrollView(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          RatingBar.builder(
-                            itemSize: 55.r,
-                            glow: false,
-                            initialRating: 0,
-                            minRating: 0,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4.w),
-                            itemBuilder: (context, _) => const Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                            onRatingUpdate: (rating) {
-                              print(rating);
-                            },
+                          20.h.heightBox,
+                          Text(
+                            '${album.name} by ${album.artist}',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.title,
                           ),
+                          30.h.heightBox,
+                          AppTextField(
+                            controller: descriptionController,
+                            expanded: true,
+                            hintText: 'Write a review (if you want)',
+                          ).paddingSymmetric(horizontal: 30.w),
                           15.h.heightBox,
-                          MainButton(
-                            onTap: () {},
-                            text: 'Rate',
-                            paddingSymmetric: 30,
-                            color: Colors.green,
-                          ),
-                          10.heightBox,
-                          InkWell(
-                            onTap: () {},
-                            child: Ink(
-                              width: 110.w,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  'Did not listen',
-                                  style: AppTextStyles.underTitle.copyWith(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w400,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              RatingBar.builder(
+                                itemSize: 55.r,
+                                glow: false,
+                                initialRating: 0,
+                                minRating: 0,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                itemCount: 5,
+                                itemPadding:
+                                    EdgeInsets.symmetric(horizontal: 4.w),
+                                itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                onRatingUpdate: (rating) {
+                                  rated = rating;
+                                },
+                              ),
+                              15.h.heightBox,
+                              MainButton(
+                                onTap: () {
+                                  context.read<RateAlbumBloc>().add(
+                                        RateAlbumEvent.rateAlbum(
+                                          rating: rated,
+                                          authorId: user.id,
+                                          albumId: album.id,
+                                          description:
+                                              descriptionController.text,
+                                        ),
+                                      );
+                                },
+                                text: 'Rate',
+                                paddingSymmetric: 30,
+                                color: Colors.blue,
+                              ),
+                              10.heightBox,
+                              InkWell(
+                                onTap: () {
+                                  context
+                                      .read<RateAlbumBloc>()
+                                      .add(const RateAlbumEvent.didNotListen());
+                                },
+                                child: Ink(
+                                  width: 110.w,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'Did not listen',
+                                      style: AppTextStyles.underTitle.copyWith(
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          )
+                              )
+                            ],
+                          ).paddingOnly(bottom: 30.h),
                         ],
+                      ).paddingSymmetric(horizontal: 30.w),
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.blue,
                       ),
-                    ).paddingOnly(bottom: 30.h),
-                  ),
-                ],
-              ).paddingSymmetric(horizontal: 30.w),
+                    ),
             ),
           );
         },
@@ -210,3 +160,73 @@ class RateAlbumPage extends StatelessWidget {
     );
   }
 }
+
+/*Row(
+                            children: [
+                              Container(
+                                width: 100.w,
+                                height: 100.h,
+                                decoration: album.cover == null
+                                    ? BoxDecoration(
+                                        border: Border.all(
+                                          width: 1,
+                                          color: const Color.fromARGB(
+                                              255, 204, 204, 204),
+                                        ),
+                                      )
+                                    : BoxDecoration(
+                                        border: Border.all(
+                                          width: 1,
+                                          color: const Color.fromARGB(
+                                              255, 222, 222, 222),
+                                        ),
+                                      ),
+                                alignment: Alignment.center,
+                                child: album.cover != null
+                                    ? CachedNetworkImage(
+                                        imageUrl: album.cover!,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : SizedBox(
+                                        width: 170.w,
+                                        height: 170.h,
+                                        child: SvgPicture.asset(
+                                          AppIcons.albumPlaceholder,
+                                          color: const Color.fromARGB(
+                                              255, 221, 221, 221),
+                                        ),
+                                      ),
+                              ),
+                              20.w.widthBox,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 230.w,
+                                    height: 70.h,
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      album.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      style: AppTextStyles.title.copyWith(
+                                        fontSize: 25.sp,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    album.artist,
+                                    style: AppTextStyles.underTitle.copyWith(
+                                      fontSize: 15.sp,
+                                    ),
+                                  ),
+                                  Text(
+                                    album.released,
+                                    style: AppTextStyles.underTitle.copyWith(
+                                      fontSize: 15.sp,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),*/

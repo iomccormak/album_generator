@@ -9,9 +9,9 @@ class Review with _$Review {
   const factory Review({
     String? id,
     required String authorId,
-    required int rating,
+    required double rating,
     required String albumId,
-    @Default('') String text,
+    String? description,
     required DateTime timeStamp,
   }) = _Review;
 
