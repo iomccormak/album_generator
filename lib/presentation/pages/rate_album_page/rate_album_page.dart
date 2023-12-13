@@ -51,6 +51,7 @@ class RateAlbumPage extends StatelessWidget {
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
+              resizeToAvoidBottomInset: false,
               appBar: AppBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
@@ -66,8 +67,8 @@ class RateAlbumPage extends StatelessWidget {
                 ),
               ),
               body: state is Initial
-                  ? SingleChildScrollView(
-                      child: Column(
+                  ? Center(
+                    child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -113,8 +114,7 @@ class RateAlbumPage extends StatelessWidget {
                                           rating: rated,
                                           authorId: user.id,
                                           albumId: album.id,
-                                          description:
-                                              descriptionController.text,
+                                          description: descriptionController.text,
                                         ),
                                       );
                                 },
@@ -147,7 +147,7 @@ class RateAlbumPage extends StatelessWidget {
                           ).paddingOnly(bottom: 30.h),
                         ],
                       ).paddingSymmetric(horizontal: 30.w),
-                    )
+                  )
                   : const Center(
                       child: CircularProgressIndicator(
                         color: Colors.blue,

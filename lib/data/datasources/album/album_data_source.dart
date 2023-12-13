@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:album_generator/data/datasources/user/user_data_source.dart';
 import 'package:album_generator/data/firebase_collections.dart';
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,7 +11,9 @@ import 'package:injectable/injectable.dart';
 class AlbumDataSource {
   final FirebaseFirestore _firebaseFirestore;
 
-  AlbumDataSource(this._firebaseFirestore);
+  AlbumDataSource(
+    this._firebaseFirestore,
+  );
 
   Future<Album> fetchAlbum(String id) async {
     final snapshot = await FirebaseFirestore.instance
@@ -20,12 +24,40 @@ class AlbumDataSource {
     return album;
   }
 
-  Future<Album> fetchRandomAlbum() async {
+  Future<Album?> fetchNextAlbum(UserModel user) async {
+    final listenedAlbums = user.listenedAlbums ?? [];
     final snapshot = await FirebaseFirestore.instance
         .collection(FirebaseCollections.albums)
         .get();
-    int randomIndex = Random().nextInt(snapshot.docs.length);
-    Album album = Album.fromJson(snapshot.docs[randomIndex].data());
-    return album;
+
+    final unheardAlbums = snapshot.docs.where((doc) {
+      return !listenedAlbums.contains(doc['id']);
+    }).toList();
+
+    if (unheardAlbums.isNotEmpty) {
+      int randomIndex = Random().nextInt(unheardAlbums.length);
+      Album album = Album.fromJson(unheardAlbums[randomIndex].data());
+      return album;
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<Album>?> fetchListenedAlbums(List<String> ids) async {
+    final List<Album> listenedAlbums = [];
+    final snapshot = await FirebaseFirestore.instance
+        .collection(FirebaseCollections.albums)
+        .get();
+
+    final heardAlbums = snapshot.docs.where((doc) {
+      return ids.contains(doc['id']);
+    }).toList();
+
+    if (heardAlbums.isNotEmpty) {
+      for (int i = 0; i < heardAlbums.length; i++) {
+        listenedAlbums.add(Album.fromJson(heardAlbums[i].data()));
+      }
+    }
+    return listenedAlbums;
   }
 }

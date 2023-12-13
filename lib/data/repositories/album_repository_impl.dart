@@ -1,7 +1,7 @@
-
 import 'package:album_generator/data/datasources/album/album_data_source.dart';
 import 'package:album_generator/data/datasources/user/user_data_source.dart';
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/domain/repositories/album_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,7 +21,12 @@ class AlbumRepositoryImpl extends AlbumRepository {
   }
 
   @override
-  Future<Album> fetchRandomAlbum() async {
-    return await _albumDataSource.fetchRandomAlbum();
+  Future<Album?> fetchNextAlbum(UserModel user) async {
+    return await _albumDataSource.fetchNextAlbum(user);
+  }
+  
+  @override
+  Future<List<Album>?> fetchListenedAlbums(List<String> ids) async {
+    return await _albumDataSource.fetchListenedAlbums(ids);
   }
 }

@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:album_generator/domain/enitites/album/album.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
+import 'package:album_generator/domain/repositories/album_repository.dart';
 import 'package:album_generator/domain/repositories/auth_repository.dart';
 import 'package:album_generator/domain/repositories/user_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -18,11 +20,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
     with SideEffectBlocMixin<ProfileState, ProfileCommand> {
   final UserRepository _userRepository;
   final AuthRepository _authRepository;
+  final AlbumRepository _albumRepository;
   late UserModel currentUser;
 
   ProfileBloc(
     this._userRepository,
     this._authRepository,
+    this._albumRepository,
   ) : super(const Initial()) {
     on<Started>(_onStarted);
     on<SignOut>(_onSignOut);
@@ -34,8 +38,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
   ) async {
     try {
       emit(const ProfileState.loading());
-      currentUser = await _userRepository.getCurrentUser();
-      emit(ProfileState.loaded(currentUser));
+      final currentUser = await _userRepository.getCurrentUser();
+      final listenedAlbums = await _albumRepository
+          .fetchListenedAlbums(currentUser.listenedAlbums!);
+      emit(ProfileState.loaded(currentUser, listenedAlbums!));
     } catch (e) {
       log('Error in profile bloc: $e');
       produceSideEffect(const ProfileCommand.error());

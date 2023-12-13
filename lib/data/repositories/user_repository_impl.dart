@@ -19,8 +19,8 @@ class UserRepositoryImpl extends UserRepository {
   }
   
   @override
-  Future<void> updateReviewCount() async {
-    await _userDataSource.updateReviewCount();
+  Future<void> updateReviewCount(String albumId) async {
+    await _userDataSource.updateReviewCount(albumId);
   }
 
  

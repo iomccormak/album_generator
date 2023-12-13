@@ -60,8 +60,9 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  body: Center(
+                  body: SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         20.h.heightBox,
                         Container(
@@ -112,11 +113,42 @@ class ProfilePage extends StatelessWidget {
                             fontSize: 50.sp,
                           ),
                         ),
-                        10.h.heightBox,
                         Text(
                           'albums listened',
                           style: AppTextStyles.underTitle,
-                        )
+                        ),
+                        40.h.heightBox,
+                        state.user.listenedAlbums != null
+                            ? ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: state.listenedAlbums.length,
+                                itemBuilder: (context, index) {
+                                  int i = state.user.listenedAlbums!.length -
+                                      index -
+                                      1;
+                                  return Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: 10.h, left: 30.w, right: 30.w),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          '$i',
+                                          style: AppTextStyles.underTitle,
+                                        ),
+                                        20.w.widthBox,
+                                        Text(
+                                          state.listenedAlbums[i].name,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 3,
+                                          style: AppTextStyles.underTitle,
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
+                              )
+                            : const SizedBox.shrink(),
                       ],
                     ),
                   ),

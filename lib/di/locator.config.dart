@@ -80,6 +80,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i20.ProfileBloc>(() => _i20.ProfileBloc(
         get<_i10.UserRepository>(),
         get<_i16.AuthRepository>(),
+        get<_i13.AlbumRepository>(),
       ));
   gh.singleton<_i21.ReviewRepository>(_i22.ReviewRepositoryImpl(
     get<_i6.ReviewDataSource>(),

@@ -23,7 +23,7 @@ class UserDataSource {
     return UserModel.fromJson(json.data()!);
   }
 
-  Future<void> updateReviewCount() async {
+  Future<void> updateReviewCount(String albumId) async {
     final currentUser = await getCurrentUser();
     if (currentUser.reviewCount != null) {
       await _firebaseFirestore
@@ -31,6 +31,7 @@ class UserDataSource {
           .doc(currentUser.id)
           .update({
         'reviewCount': FieldValue.increment(1),
+        'listenedAlbums': FieldValue.arrayUnion([albumId]),
       });
     } else {
       await _firebaseFirestore
@@ -39,6 +40,7 @@ class UserDataSource {
           .set(
         {
           'reviewCount': 1,
+          'listenedAlbums': [albumId],
         },
         SetOptions(merge: true),
       );
