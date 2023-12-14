@@ -80,7 +80,7 @@ class AlbumPage extends StatelessWidget {
             ),
             20.h.heightBox,
             Text(
-              '★ ${album.rating.toString()}',
+              '★ ${album.rating!.toStringAsFixed(2)}',
               //'★ 4.21',
               style: AppTextStyles.underTitle.copyWith(
                 fontWeight: FontWeight.w600,
