@@ -93,6 +93,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i25.RateAlbumBloc>(() => _i25.RateAlbumBloc(
         get<_i21.ReviewRepository>(),
         get<_i10.UserRepository>(),
+        get<_i13.AlbumRepository>(),
       ));
   return get;
 }

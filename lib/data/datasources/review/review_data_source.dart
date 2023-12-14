@@ -17,4 +17,15 @@ class ReviewDataSource {
     await _firebaseFirestore.runTransaction(
         (transaction) async => transaction.set(newDocRef, reviewJson));
   }
+
+  Future<List<Review>?> getReviewsByAlbumId(String albumId) async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection(FirebaseCollections.reviews)
+        .where('albumId', isEqualTo: albumId)
+        .get();
+
+    return snapshot.docs
+        .map((review) => Review.fromJson(review.data()))
+        .toList();
+  }
 }

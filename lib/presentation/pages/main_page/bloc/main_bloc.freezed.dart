@@ -282,21 +282,21 @@ mixin _$MainState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel currentUser, Album? album) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel currentUser, Album? album)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel currentUser, Album? album)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -381,7 +381,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel currentUser, Album? album) loaded,
   }) {
     return initial();
   }
@@ -391,7 +391,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel currentUser, Album? album)? loaded,
   }) {
     return initial?.call();
   }
@@ -401,7 +401,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel currentUser, Album? album)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -489,7 +489,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel currentUser, Album? album) loaded,
   }) {
     return loading();
   }
@@ -499,7 +499,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel currentUser, Album? album)? loaded,
   }) {
     return loading?.call();
   }
@@ -509,7 +509,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel currentUser, Album? album)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -563,10 +563,10 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel currentUser, Album album});
+  $Res call({UserModel currentUser, Album? album});
 
   $UserModelCopyWith<$Res> get currentUser;
-  $AlbumCopyWith<$Res> get album;
+  $AlbumCopyWith<$Res>? get album;
 }
 
 /// @nodoc
@@ -581,17 +581,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentUser = null,
-    Object? album = null,
+    Object? album = freezed,
   }) {
     return _then(_$LoadedImpl(
       null == currentUser
           ? _value.currentUser
           : currentUser // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      null == album
+      freezed == album
           ? _value.album
           : album // ignore: cast_nullable_to_non_nullable
-              as Album,
+              as Album?,
     ));
   }
 
@@ -605,8 +605,12 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $AlbumCopyWith<$Res> get album {
-    return $AlbumCopyWith<$Res>(_value.album, (value) {
+  $AlbumCopyWith<$Res>? get album {
+    if (_value.album == null) {
+      return null;
+    }
+
+    return $AlbumCopyWith<$Res>(_value.album!, (value) {
       return _then(_value.copyWith(album: value));
     });
   }
@@ -620,7 +624,7 @@ class _$LoadedImpl implements Loaded {
   @override
   final UserModel currentUser;
   @override
-  final Album album;
+  final Album? album;
 
   @override
   String toString() {
@@ -651,7 +655,7 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel currentUser, Album album) loaded,
+    required TResult Function(UserModel currentUser, Album? album) loaded,
   }) {
     return loaded(currentUser, album);
   }
@@ -661,7 +665,7 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel currentUser, Album album)? loaded,
+    TResult? Function(UserModel currentUser, Album? album)? loaded,
   }) {
     return loaded?.call(currentUser, album);
   }
@@ -671,7 +675,7 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel currentUser, Album album)? loaded,
+    TResult Function(UserModel currentUser, Album? album)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -716,11 +720,11 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements MainState {
-  const factory Loaded(final UserModel currentUser, final Album album) =
+  const factory Loaded(final UserModel currentUser, final Album? album) =
       _$LoadedImpl;
 
   UserModel get currentUser;
-  Album get album;
+  Album? get album;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;

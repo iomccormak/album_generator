@@ -35,7 +35,7 @@ class MainBloc extends Bloc<MainEvent, MainState>
     try {
       final user = await _userRepository.getCurrentUser();
       final album = await _albumRepository.fetchNextAlbum(user);
-      emit(MainState.loaded(user, album!));
+      emit(MainState.loaded(user, album));
     } catch (e) {
       log('Error in main bloc: $e');
       produceSideEffect(const MainCommand.error());

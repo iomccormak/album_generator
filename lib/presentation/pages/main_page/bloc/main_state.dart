@@ -6,6 +6,6 @@ class MainState with _$MainState {
   const factory MainState.loading() = Loading;
   const factory MainState.loaded(
     UserModel currentUser,
-    Album album,
+    Album? album,
   ) = Loaded;
 }

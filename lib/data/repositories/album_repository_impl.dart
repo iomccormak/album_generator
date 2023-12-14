@@ -24,9 +24,14 @@ class AlbumRepositoryImpl extends AlbumRepository {
   Future<Album?> fetchNextAlbum(UserModel user) async {
     return await _albumDataSource.fetchNextAlbum(user);
   }
-  
+
   @override
   Future<List<Album>?> fetchListenedAlbums(List<String> ids) async {
     return await _albumDataSource.fetchListenedAlbums(ids);
+  }
+
+  @override
+  Future<void> updateRating(String albumId, double rating) async {
+    await _albumDataSource.updateRating(albumId, rating);
   }
 }

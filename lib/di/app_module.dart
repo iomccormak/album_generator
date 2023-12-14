@@ -13,4 +13,6 @@ abstract class AppModule {
 
   @singleton
   FirebaseStorage firebaseStorage() => FirebaseStorage.instance;
+
+  
 }

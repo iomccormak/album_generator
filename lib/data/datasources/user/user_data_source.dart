@@ -1,4 +1,5 @@
 import 'package:album_generator/data/firebase_collections.dart';
+import 'package:album_generator/domain/enitites/review/review.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,5 +46,18 @@ class UserDataSource {
         SetOptions(merge: true),
       );
     }
+  }
+
+  Future<List<Review>> fetchUserReviews(String authorId) async {
+    final snapshot = await _firebaseFirestore
+        .collection(FirebaseCollections.reviews)
+        .where('authorId', isEqualTo: authorId)
+        .orderBy('timeStamp', descending: true)
+        .get();
+
+    final List<Review> reviews =
+        snapshot.docs.map((doc) => Review.fromJson(doc.data())).toList();
+
+    return reviews;
   }
 }

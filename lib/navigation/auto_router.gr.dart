@@ -49,9 +49,13 @@ class AutoRouter extends _i9.RootStackRouter {
       );
     },
     AlbumRoute.name: (routeData) {
+      final args = routeData.argsAs<AlbumRouteArgs>();
       return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.AlbumPage(),
+        child: _i3.AlbumPage(
+          key: args.key,
+          album: args.album,
+        ),
       );
     },
     InfoRoute.name: (routeData) {
@@ -155,14 +159,36 @@ class StartRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.AlbumPage]
-class AlbumRoute extends _i9.PageRouteInfo<void> {
-  const AlbumRoute()
-      : super(
+class AlbumRoute extends _i9.PageRouteInfo<AlbumRouteArgs> {
+  AlbumRoute({
+    _i10.Key? key,
+    required _i12.Album album,
+  }) : super(
           AlbumRoute.name,
           path: '/album-page',
+          args: AlbumRouteArgs(
+            key: key,
+            album: album,
+          ),
         );
 
   static const String name = 'AlbumRoute';
+}
+
+class AlbumRouteArgs {
+  const AlbumRouteArgs({
+    this.key,
+    required this.album,
+  });
+
+  final _i10.Key? key;
+
+  final _i12.Album album;
+
+  @override
+  String toString() {
+    return 'AlbumRouteArgs{key: $key, album: $album}';
+  }
 }
 
 /// generated route for

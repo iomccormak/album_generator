@@ -18,7 +18,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => getIt<MainBloc>()..add(const Started()),
       child: BlocSideEffectConsumer<MainBloc, MainBloc, MainState, MainCommand>(
@@ -69,70 +68,75 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      20.h.heightBox,
-                      Container(
-                        width: 300.w,
-                        height: 300.h,
-                        decoration: state.album.cover == null
-                            ? BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color:
-                                      const Color.fromARGB(255, 204, 204, 204),
+                  body: state.album != null
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            20.h.heightBox,
+                            Container(
+                              width: 300.w,
+                              height: 300.h,
+                              decoration: state.album!.cover == null
+                                  ? BoxDecoration(
+                                      border: Border.all(
+                                        width: 1,
+                                        color: const Color.fromARGB(
+                                            255, 204, 204, 204),
+                                      ),
+                                    )
+                                  : null,
+                              alignment: Alignment.center,
+                              child: state.album!.cover != null
+                                  ? CachedNetworkImage(
+                                      imageUrl: state.album!.cover!,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : SizedBox(
+                                      width: 170.w,
+                                      height: 170.h,
+                                      child: SvgPicture.asset(
+                                        AppIcons.albumPlaceholder,
+                                        color: const Color.fromARGB(
+                                            255, 221, 221, 221),
+                                      ),
+                                    ),
+                            ),
+                            20.h.heightBox,
+                            Text(
+                              state.album!.name,
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.title,
+                            ),
+                            10.h.heightBox,
+                            Text(
+                              state.album!.artist,
+                              style: AppTextStyles.underTitle,
+                            ),
+                            Text(
+                              state.album!.released,
+                              style: AppTextStyles.underTitle,
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: MainButton(
+                                  onTap: () {
+                                    context.router.push(RateAlbumRoute(
+                                      album: state.album!,
+                                      user: state.currentUser,
+                                    ));
+                                  },
+                                  text: 'Rate',
+                                  paddingSymmetric: 30,
                                 ),
-                              )
-                            : null,
-                        alignment: Alignment.center,
-                        child: state.album.cover != null
-                            ? CachedNetworkImage(
-                                imageUrl: state.album.cover!,
-                                fit: BoxFit.cover,
-                              )
-                            : SizedBox(
-                                width: 170.w,
-                                height: 170.h,
-                                child: SvgPicture.asset(
-                                  AppIcons.albumPlaceholder,
-                                  color:
-                                      const Color.fromARGB(255, 221, 221, 221),
-                                ),
-                              ),
-                      ),
-                      20.h.heightBox,
-                      Text(
-                        state.album.name,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.title,
-                      ),
-                      10.h.heightBox,
-                      Text(
-                        state.album.artist,
-                        style: AppTextStyles.underTitle,
-                      ),
-                      Text(
-                        state.album.released,
-                        style: AppTextStyles.underTitle,
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: MainButton(
-                            onTap: () {
-                              context.router.push(RateAlbumRoute(
-                                album: state.album,
-                                user: state.currentUser,
-                              ));
-                            },
-                            text: 'Rate',
-                            paddingSymmetric: 30,
-                          ),
-                        ).paddingOnly(bottom: 30.h),
-                      ),
-                    ],
-                  ).paddingSymmetric(horizontal: 34.w))
+                              ).paddingOnly(bottom: 30.h),
+                            ),
+                          ],
+                        ).paddingSymmetric(horizontal: 34.w)
+                      : const Center(
+                          child: Text('no albums to display'),
+                        ),
+                )
               : const Scaffold(
                   body: Center(
                     child: CircularProgressIndicator(

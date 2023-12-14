@@ -30,6 +30,8 @@ class AuthDataSource {
         'username': name,
         'email': email,
         'id': userCredential.user!.uid,
+        'listenedAlbums': <String>[],
+        'reviewCount': 0,
       },
     );
   }

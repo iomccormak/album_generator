@@ -15,5 +15,12 @@ class Review with _$Review {
     required DateTime timeStamp,
   }) = _Review;
 
-  factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);
+  factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson({
+        'id': json['id'] as String?,
+        'authorId': json['authorId'] as String,
+        'rating': json['rating'] as double,
+        'albumId': json['albumId'] as String,
+        'description': json['description'] as String?,
+        'timeStamp': json['timeStamp'] as DateTime
+      });
 }

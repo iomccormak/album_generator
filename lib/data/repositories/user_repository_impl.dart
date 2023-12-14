@@ -1,8 +1,7 @@
 import 'package:album_generator/data/datasources/user/user_data_source.dart';
-import 'package:album_generator/data/firebase_collections.dart';
+import 'package:album_generator/domain/enitites/review/review.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/domain/repositories/user_repository.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: UserRepository)
@@ -17,11 +16,14 @@ class UserRepositoryImpl extends UserRepository {
   Future<UserModel> getCurrentUser() async {
     return await _userDataSource.getCurrentUser();
   }
-  
+
   @override
   Future<void> updateReviewCount(String albumId) async {
     await _userDataSource.updateReviewCount(albumId);
   }
 
- 
+  @override
+  Future<List<Review>> fetchUserReviews(String authorId) async {
+    return await _userDataSource.fetchUserReviews(authorId);
+  }
 }

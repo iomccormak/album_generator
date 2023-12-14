@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:album_generator/data/datasources/user/user_data_source.dart';
 import 'package:album_generator/data/firebase_collections.dart';
 import 'package:album_generator/domain/enitites/album/album.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
@@ -59,5 +58,28 @@ class AlbumDataSource {
       }
     }
     return listenedAlbums;
+  }
+
+  Future<void> updateRating(String albumId, double rating) async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection(FirebaseCollections.albums)
+        .doc(albumId)
+        .get();
+
+    double? currentRating = snapshot['rating'];
+    int reviewCount = snapshot['reviewCount'];
+
+    currentRating ??= 0;
+    double updatedRating =
+        (currentRating * reviewCount + rating) / (reviewCount + 1);
+    int updatedNumberOfRatings = reviewCount + 1;
+
+    await FirebaseFirestore.instance
+        .collection(FirebaseCollections.albums)
+        .doc(albumId)
+        .update({
+      'rating': updatedRating,
+      'reviewCount': updatedNumberOfRatings,
+    });
   }
 }

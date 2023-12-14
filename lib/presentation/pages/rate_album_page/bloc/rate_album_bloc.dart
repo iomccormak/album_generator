@@ -1,4 +1,5 @@
 import 'package:album_generator/domain/enitites/review/review.dart';
+import 'package:album_generator/domain/repositories/album_repository.dart';
 import 'package:album_generator/domain/repositories/review_repository.dart';
 import 'package:album_generator/domain/repositories/user_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -16,10 +17,12 @@ class RateAlbumBloc extends Bloc<RateAlbumEvent, RateAlbumState>
     with SideEffectBlocMixin<RateAlbumState, RateAlbumCommand> {
   final ReviewRepository _reviewRepository;
   final UserRepository _userRepository;
+  final AlbumRepository _albumRepository;
 
   RateAlbumBloc(
     this._reviewRepository,
     this._userRepository,
+    this._albumRepository,
   ) : super(const Initial()) {
     on<RateAlbum>(_onRateAlbum);
     on<DidNotListen>(_onDidNotListen);
@@ -42,6 +45,7 @@ class RateAlbumBloc extends Bloc<RateAlbumEvent, RateAlbumState>
           ),
         );
         await _userRepository.updateReviewCount(event.albumId);
+        await _albumRepository.updateRating(event.albumId, event.rating);
         produceSideEffect(const RateAlbumCommand.navToNextAlbum());
       } else {
         produceSideEffect(

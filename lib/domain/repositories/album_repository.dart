@@ -7,4 +7,6 @@ abstract class AlbumRepository {
   Future<Album> fetchAlbum(String id);
 
   Future<List<Album>?> fetchListenedAlbums(List<String> ids);
+
+  Future<void> updateRating(String albumId, double rating);
 }

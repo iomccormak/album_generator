@@ -284,7 +284,8 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel user, List<Album> listenedAlbums)
+    required TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -292,14 +293,18 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult? Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -385,7 +390,8 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel user, List<Album> listenedAlbums)
+    required TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
         loaded,
   }) {
     return initial();
@@ -396,7 +402,9 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult? Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
   }) {
     return initial?.call();
   }
@@ -406,7 +414,9 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -494,7 +504,8 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel user, List<Album> listenedAlbums)
+    required TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
         loaded,
   }) {
     return loading();
@@ -505,7 +516,9 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult? Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
   }) {
     return loading?.call();
   }
@@ -515,7 +528,9 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -569,7 +584,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel user, List<Album> listenedAlbums});
+  $Res call({UserModel user, List<Review> reviews, List<Album> listenedAlbums});
 
   $UserModelCopyWith<$Res> get user;
 }
@@ -586,6 +601,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? reviews = null,
     Object? listenedAlbums = null,
   }) {
     return _then(_$LoadedImpl(
@@ -593,6 +609,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
+      null == reviews
+          ? _value._reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as List<Review>,
       null == listenedAlbums
           ? _value._listenedAlbums
           : listenedAlbums // ignore: cast_nullable_to_non_nullable
@@ -612,11 +632,21 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(this.user, final List<Album> listenedAlbums)
-      : _listenedAlbums = listenedAlbums;
+  const _$LoadedImpl(
+      this.user, final List<Review> reviews, final List<Album> listenedAlbums)
+      : _reviews = reviews,
+        _listenedAlbums = listenedAlbums;
 
   @override
   final UserModel user;
+  final List<Review> _reviews;
+  @override
+  List<Review> get reviews {
+    if (_reviews is EqualUnmodifiableListView) return _reviews;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reviews);
+  }
+
   final List<Album> _listenedAlbums;
   @override
   List<Album> get listenedAlbums {
@@ -627,7 +657,7 @@ class _$LoadedImpl implements Loaded {
 
   @override
   String toString() {
-    return 'ProfileState.loaded(user: $user, listenedAlbums: $listenedAlbums)';
+    return 'ProfileState.loaded(user: $user, reviews: $reviews, listenedAlbums: $listenedAlbums)';
   }
 
   @override
@@ -636,13 +666,17 @@ class _$LoadedImpl implements Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality().equals(other._reviews, _reviews) &&
             const DeepCollectionEquality()
                 .equals(other._listenedAlbums, _listenedAlbums));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, user, const DeepCollectionEquality().hash(_listenedAlbums));
+      runtimeType,
+      user,
+      const DeepCollectionEquality().hash(_reviews),
+      const DeepCollectionEquality().hash(_listenedAlbums));
 
   @JsonKey(ignore: true)
   @override
@@ -655,10 +689,11 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserModel user, List<Album> listenedAlbums)
+    required TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
         loaded,
   }) {
-    return loaded(user, listenedAlbums);
+    return loaded(user, reviews, listenedAlbums);
   }
 
   @override
@@ -666,9 +701,11 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult? Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
   }) {
-    return loaded?.call(user, listenedAlbums);
+    return loaded?.call(user, reviews, listenedAlbums);
   }
 
   @override
@@ -676,11 +713,13 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserModel user, List<Album> listenedAlbums)? loaded,
+    TResult Function(
+            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user, listenedAlbums);
+      return loaded(user, reviews, listenedAlbums);
     }
     return orElse();
   }
@@ -721,10 +760,11 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements ProfileState {
-  const factory Loaded(final UserModel user, final List<Album> listenedAlbums) =
-      _$LoadedImpl;
+  const factory Loaded(final UserModel user, final List<Review> reviews,
+      final List<Album> listenedAlbums) = _$LoadedImpl;
 
   UserModel get user;
+  List<Review> get reviews;
   List<Album> get listenedAlbums;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>

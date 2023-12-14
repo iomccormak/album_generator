@@ -5,16 +5,13 @@ import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/rate_album_page/bloc/rate_album_bloc.dart';
 import 'package:album_generator/presentation/widgets/app_text_field.dart';
 import 'package:album_generator/presentation/widgets/main_button.dart';
-import 'package:album_generator/utils/app_icons.dart';
 import 'package:album_generator/utils/app_text_styles.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_extensions/awesome_extensions.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 
 class RateAlbumPage extends StatelessWidget {
