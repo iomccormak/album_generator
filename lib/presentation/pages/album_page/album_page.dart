@@ -89,12 +89,12 @@ class AlbumPage extends StatelessWidget {
                     album.name,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.title,
-                  ),
+                  ).paddingSymmetric(horizontal: 34.w),
                   10.h.heightBox,
                   Text(
                     album.artist,
                     style: AppTextStyles.underTitle,
-                  ),
+                  ).paddingSymmetric(horizontal: 34.w),
                   Text(
                     album.released,
                     style: AppTextStyles.underTitle,
@@ -157,26 +157,25 @@ class AlbumPage extends StatelessWidget {
                                             builder: (context, snapshot) {
                                               if (snapshot.hasData) {
                                                 return Padding(
-                                                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 20.w),
                                                   child: ReviewCard(
                                                     totalCount:
                                                         state.reviews!.length,
-                                                    index: state.reviews!.length -
-                                                        index,
+                                                    index:
+                                                        state.reviews!.length -
+                                                            index,
                                                     author:
                                                         snapshot.data!.username,
-                                                    rating:
-                                                        review.rating.toString(),
+                                                    rating: review.rating
+                                                        .toString(),
                                                     description:
                                                         review.description,
                                                     timeStamp: review.timeStamp,
                                                   ),
                                                 );
                                               } else {
-                                                return SizedBox(
-                                                  height: 60.r,
-                                                  width: 44.r,
-                                                );
+                                                return const SizedBox.shrink();
                                               }
                                             },
                                           );

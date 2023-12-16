@@ -7,6 +7,5 @@ class ProfileState with _$ProfileState {
   const factory ProfileState.loaded(
     UserModel user,
     List<Review> reviews,
-    List<Album> listenedAlbums,
   ) = Loaded;
 }

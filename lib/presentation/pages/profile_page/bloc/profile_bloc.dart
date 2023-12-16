@@ -33,6 +33,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
     on<SignOut>(_onSignOut);
   }
 
+  Future<Album> getAlbumById(String albumId) async {
+    return await _albumRepository.fetchAlbumById(albumId);
+  }
+
   void _onStarted(
     Started event,
     Emitter<ProfileState> emit,
@@ -41,17 +45,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
       emit(const ProfileState.loading());
       final currentUser = await _userRepository.getCurrentUser();
       final reviews = await _userRepository.fetchUserReviews(currentUser.id);
-      final listenedAlbums = await _albumRepository
-          .fetchListenedAlbums(currentUser.listenedAlbums!);
-
-      final reviewsId = reviews.map((review) => review.albumId).toList();
-      List<Album> sortedListenedAlbums = List.from(listenedAlbums!);
-      sortedListenedAlbums.sort(
-        (a, b) {
-          return reviewsId.indexOf(a.id).compareTo(reviewsId.indexOf(b.id));
-        },
-      );
-      emit(ProfileState.loaded(currentUser, reviews, sortedListenedAlbums));
+      emit(ProfileState.loaded(currentUser, reviews));
     } catch (e) {
       log('Error in profile bloc: $e');
       produceSideEffect(

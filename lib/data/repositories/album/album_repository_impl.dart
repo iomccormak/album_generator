@@ -16,8 +16,8 @@ class AlbumRepositoryImpl extends AlbumRepository {
   );
 
   @override
-  Future<Album> fetchAlbum(String id) async {
-    return await _albumDataSource.fetchAlbum(id);
+  Future<Album> fetchAlbumById(String id) async {
+    return await _albumDataSource.fetchAlbumById(id);
   }
 
   @override
@@ -31,7 +31,7 @@ class AlbumRepositoryImpl extends AlbumRepository {
   }
 
   @override
-  Future<void> updateRating(String albumId, double rating) async {
-    await _albumDataSource.updateRating(albumId, rating);
+  Future<void> updateAlbumRating(String albumId, double rating) async {
+    await _albumDataSource.updateAlbumRating(albumId, rating);
   }
 }

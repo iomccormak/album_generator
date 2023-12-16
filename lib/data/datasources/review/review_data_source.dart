@@ -8,7 +8,9 @@ import 'package:injectable/injectable.dart';
 class ReviewDataSource {
   final FirebaseFirestore _firebaseFirestore;
 
-  ReviewDataSource(this._firebaseFirestore);
+  ReviewDataSource(
+    this._firebaseFirestore,
+  );
 
   Future<void> rateAlbum(Review review) async {
     Map<String, dynamic> reviewJson = review.toJson();
@@ -20,7 +22,7 @@ class ReviewDataSource {
   }
 
   Future<List<Review>?> fetchReviewsByAlbumId(String albumId) async {
-    final snapshot = await FirebaseFirestore.instance
+    final snapshot = await _firebaseFirestore
         .collection(FirebaseCollections.reviews)
         .where('albumId', isEqualTo: albumId)
         .orderBy('timeStamp', descending: true)

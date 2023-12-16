@@ -44,8 +44,8 @@ class RateAlbumBloc extends Bloc<RateAlbumEvent, RateAlbumState>
             description: event.description,
           ),
         );
-        await _userRepository.updateReviewCount(event.albumId);
-        await _albumRepository.updateRating(event.albumId, event.rating);
+        await _userRepository.updateUserReviewCount(event.albumId);
+        await _albumRepository.updateAlbumRating(event.albumId, event.rating);
         produceSideEffect(const RateAlbumCommand.navToNextAlbum());
       } else {
         produceSideEffect(

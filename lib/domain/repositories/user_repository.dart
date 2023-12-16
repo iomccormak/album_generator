@@ -6,7 +6,7 @@ abstract class UserRepository {
 
   Future<UserModel> getCurrentUser();
 
-  Future<void> updateReviewCount(String albumId);
+  Future<void> updateUserReviewCount(String albumId);
 
   Future<List<Review>> fetchUserReviews(String authorId);
 }

@@ -14,8 +14,8 @@ class AlbumDataSource {
     this._firebaseFirestore,
   );
 
-  Future<Album> fetchAlbum(String id) async {
-    final snapshot = await FirebaseFirestore.instance
+  Future<Album> fetchAlbumById(String id) async {
+    final snapshot = await _firebaseFirestore
         .collection(FirebaseCollections.albums)
         .doc(id)
         .get();
@@ -25,7 +25,7 @@ class AlbumDataSource {
 
   Future<Album?> fetchNextAlbum(UserModel user) async {
     final listenedAlbums = user.listenedAlbums ?? [];
-    final snapshot = await FirebaseFirestore.instance
+    final snapshot = await _firebaseFirestore
         .collection(FirebaseCollections.albums)
         .get();
 
@@ -44,7 +44,7 @@ class AlbumDataSource {
 
   Future<List<Album>?> fetchListenedAlbums(List<String> ids) async {
     final List<Album> listenedAlbums = [];
-    final snapshot = await FirebaseFirestore.instance
+    final snapshot = await _firebaseFirestore
         .collection(FirebaseCollections.albums)
         .get();
 
@@ -60,8 +60,8 @@ class AlbumDataSource {
     return listenedAlbums;
   }
 
-  Future<void> updateRating(String albumId, double rating) async {
-    final snapshot = await FirebaseFirestore.instance
+  Future<void> updateAlbumRating(String albumId, double rating) async {
+    final snapshot = await _firebaseFirestore
         .collection(FirebaseCollections.albums)
         .doc(albumId)
         .get();
@@ -74,7 +74,7 @@ class AlbumDataSource {
         (currentRating * reviewCount + rating) / (reviewCount + 1);
     int updatedNumberOfRatings = reviewCount + 1;
 
-    await FirebaseFirestore.instance
+    await _firebaseFirestore
         .collection(FirebaseCollections.albums)
         .doc(albumId)
         .update({

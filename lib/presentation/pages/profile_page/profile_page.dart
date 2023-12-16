@@ -146,33 +146,63 @@ class ProfilePage extends StatelessWidget {
                                       ],
                                     ).paddingSymmetric(horizontal: 45.w),
                                     20.h.heightBox,
-                                    ListView.builder(
+                                    CustomScrollView(
                                       physics:
                                           const NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
-                                      itemCount: state.user.reviewCount,
-                                      itemBuilder: (context, index) {
-                                        final user = state.user;
-                                        final album =
-                                            state.listenedAlbums[index];
-                                        final review = state.reviews[index];
-                                        return Padding(
+                                      slivers: [
+                                        SliverPadding(
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 20.w),
-                                          child: ListenedAlbumCard(
-                                            totalCount: user.reviewCount!,
-                                            index: user.listenedAlbums!.length -
-                                                index,
-                                            name: album.name,
-                                            artist: album.artist,
-                                            review: review.description,
-                                            timeStamp: review.timeStamp,
-                                            rating: review.rating.toString(),
-                                            onTap: () => context.router
-                                                .push(AlbumRoute(album: album)),
+                                              vertical: 8.h),
+                                          sliver: SliverList.builder(
+                                            itemCount: state.reviews.length,
+                                            itemBuilder: (context, index) {
+                                              final review =
+                                                  state.reviews[index];
+                                              return FutureBuilder(
+                                                future: context
+                                                    .read<ProfileBloc>()
+                                                    .getAlbumById(
+                                                        review.albumId),
+                                                builder: (context, snapshot) {
+                                                  if (snapshot.hasData) {
+                                                    final reviewCount =
+                                                        state.user.reviewCount;
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 20.w),
+                                                      child: ListenedAlbumCard(
+                                                        totalCount:
+                                                            reviewCount!,
+                                                        index:
+                                                            reviewCount - index,
+                                                        name:
+                                                            snapshot.data!.name,
+                                                        artist: snapshot
+                                                            .data!.artist,
+                                                        review:
+                                                            review.description,
+                                                        timeStamp:
+                                                            review.timeStamp,
+                                                        rating: review.rating
+                                                            .toString(),
+                                                        onTap: () => context
+                                                            .router
+                                                            .push(AlbumRoute(
+                                                                album: snapshot
+                                                                    .data!)),
+                                                      ),
+                                                    );
+                                                  } else {
+                                                    return const SizedBox.shrink();
+                                                  }
+                                                },
+                                              );
+                                            },
                                           ),
-                                        );
-                                      },
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 )

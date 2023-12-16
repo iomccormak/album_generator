@@ -23,7 +23,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<void> updateReviewCount(String albumId) async {
+  Future<void> updateUserReviewCount(String albumId) async {
     await _userDataSource.updateReviewCount(albumId);
   }
 
@@ -31,5 +31,4 @@ class UserRepositoryImpl extends UserRepository {
   Future<List<Review>> fetchUserReviews(String authorId) async {
     return await _userDataSource.fetchUserReviews(authorId);
   }
-
 }

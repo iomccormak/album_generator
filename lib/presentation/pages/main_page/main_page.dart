@@ -23,12 +23,8 @@ class MainPage extends StatelessWidget {
       child: BlocSideEffectConsumer<MainBloc, MainBloc, MainState, MainCommand>(
         listener: (context, sideEffect) {
           sideEffect.when(
-            navToProfile: () {
-              context.router.push(const ProfileRoute());
-            },
-            navToSettings: () {
-              context.router.push(const InfoRoute());
-            },
+            navToProfile: () => context.router.push(const ProfileRoute()),
+            navToSettings: () => context.router.push(const InfoRoute()),
             navToNext: () {},
             error: (error) {
               final snackBar = SnackBar(
@@ -73,6 +69,13 @@ class MainPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             20.h.heightBox,
+                            Text(
+                              'today you can listen to:',
+                              style: AppTextStyles.underTitle.copyWith(
+                                fontSize: 15.sp,
+                              ),
+                            ),
+                            5.h.heightBox,
                             Container(
                               width: 300.w,
                               height: 300.h,

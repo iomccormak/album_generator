@@ -13,9 +13,9 @@ part 'sign_in_bloc.freezed.dart';
 @injectable
 class SignInBloc extends Bloc<SignInEvent, SignInState>
     with SideEffectBlocMixin<SignInState, SignInCommand> {
-  final AuthRepository authRepository;
+  final AuthRepository _authRepository;
 
-  SignInBloc(this.authRepository) : super(const SignInState.initial()) {
+  SignInBloc(this._authRepository) : super(const SignInState.initial()) {
     on<SignInClicked>(_onSignInClicked);
   }
 
@@ -26,7 +26,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState>
     emit(const SignInState.loading());
     try {
       if (event.email.isNotEmpty) {
-        await authRepository.emailSignIn(
+        await _authRepository.emailSignIn(
           event.email,
           event.password,
         );

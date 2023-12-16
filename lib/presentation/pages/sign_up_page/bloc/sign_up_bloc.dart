@@ -14,9 +14,9 @@ part 'sign_up_bloc.freezed.dart';
 @injectable
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState>
     with SideEffectBlocMixin<SignUpState, SignUpCommand> {
-  final AuthRepository authRepository;
+  final AuthRepository _authRepository;
   SignUpBloc(
-    this.authRepository,
+    this._authRepository,
   ) : super(const SignUpState.initial()) {
     on<SignUpClicked>(_onSignUpClicked);
   }
@@ -30,7 +30,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState>
       if (event.password == event.confirmPassword &&
           event.username.isNotEmpty &&
           event.email.isNotEmpty) {
-        await authRepository.emailSignUp(
+        await _authRepository.emailSignUp(
           event.username,
           event.email,
           event.password,
