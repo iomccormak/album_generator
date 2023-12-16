@@ -1,5 +1,6 @@
 import 'package:album_generator/data/firebase_collections.dart';
 import 'package:album_generator/domain/enitites/review/review.dart';
+import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,10 +19,11 @@ class ReviewDataSource {
         (transaction) async => transaction.set(newDocRef, reviewJson));
   }
 
-  Future<List<Review>?> getReviewsByAlbumId(String albumId) async {
+  Future<List<Review>?> fetchReviewsByAlbumId(String albumId) async {
     final snapshot = await FirebaseFirestore.instance
         .collection(FirebaseCollections.reviews)
         .where('albumId', isEqualTo: albumId)
+        .orderBy('timeStamp', descending: true)
         .get();
 
     return snapshot.docs

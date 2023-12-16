@@ -13,6 +13,11 @@ class UserRepositoryImpl extends UserRepository {
   );
 
   @override
+  Future<UserModel> getUserById(String userId) async {
+    return await _userDataSource.getUserById(userId);
+  }
+
+  @override
   Future<UserModel> getCurrentUser() async {
     return await _userDataSource.getCurrentUser();
   }
@@ -26,4 +31,5 @@ class UserRepositoryImpl extends UserRepository {
   Future<List<Review>> fetchUserReviews(String authorId) async {
     return await _userDataSource.fetchUserReviews(authorId);
   }
+
 }

@@ -26,9 +26,9 @@ class ProfilePage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToStartPage: () => context.router.push(const StartRoute()),
-            error: () {
-              const snackBar = SnackBar(
-                content: Text('Profile error'),
+            error: (error) {
+              final snackBar = SnackBar(
+                content: Text(error),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },

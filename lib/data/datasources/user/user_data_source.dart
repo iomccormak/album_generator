@@ -15,6 +15,14 @@ class UserDataSource {
     this._firebaseAuth,
   );
 
+  Future<UserModel> getUserById(String userId) async {
+    final json = await _firebaseFirestore
+        .collection(FirebaseCollections.users)
+        .doc(userId)
+        .get();
+    return UserModel.fromJson(json.data()!);
+  }
+
   Future<UserModel> getCurrentUser() async {
     final uid = _firebaseAuth.currentUser!.uid;
     final json = await _firebaseFirestore

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_bloc.dart';
+part of 'album_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,127 +15,179 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProfileEvent {
+mixin _$AlbumEvent {
+  Album get album => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() signOut,
+    required TResult Function(Album album) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? signOut,
+    TResult? Function(Album album)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? signOut,
+    TResult Function(Album album)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(SignOut value)? signOut,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AlbumEventCopyWith<AlbumEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileEventCopyWith<$Res> {
-  factory $ProfileEventCopyWith(
-          ProfileEvent value, $Res Function(ProfileEvent) then) =
-      _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
+abstract class $AlbumEventCopyWith<$Res> {
+  factory $AlbumEventCopyWith(
+          AlbumEvent value, $Res Function(AlbumEvent) then) =
+      _$AlbumEventCopyWithImpl<$Res, AlbumEvent>;
+  @useResult
+  $Res call({Album album});
+
+  $AlbumCopyWith<$Res> get album;
 }
 
 /// @nodoc
-class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
-    implements $ProfileEventCopyWith<$Res> {
-  _$ProfileEventCopyWithImpl(this._value, this._then);
+class _$AlbumEventCopyWithImpl<$Res, $Val extends AlbumEvent>
+    implements $AlbumEventCopyWith<$Res> {
+  _$AlbumEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? album = null,
+  }) {
+    return _then(_value.copyWith(
+      album: null == album
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as Album,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AlbumCopyWith<$Res> get album {
+    return $AlbumCopyWith<$Res>(_value.album, (value) {
+      return _then(_value.copyWith(album: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
+abstract class _$$StartedImplCopyWith<$Res>
+    implements $AlbumEventCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Album album});
+
+  @override
+  $AlbumCopyWith<$Res> get album;
 }
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$AlbumEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? album = null,
+  }) {
+    return _then(_$StartedImpl(
+      album: null == album
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as Album,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartedImpl implements Started {
-  const _$StartedImpl();
+  const _$StartedImpl({required this.album});
+
+  @override
+  final Album album;
 
   @override
   String toString() {
-    return 'ProfileEvent.started()';
+    return 'AlbumEvent.started(album: $album)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartedImpl &&
+            (identical(other.album, album) || other.album == album));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, album);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() signOut,
+    required TResult Function(Album album) started,
   }) {
-    return started();
+    return started(album);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? signOut,
+    TResult? Function(Album album)? started,
   }) {
-    return started?.call();
+    return started?.call(album);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? signOut,
+    TResult Function(Album album)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(album);
     }
     return orElse();
   }
@@ -144,7 +196,6 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(SignOut value) signOut,
   }) {
     return started(this);
   }
@@ -153,7 +204,6 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(SignOut value)? signOut,
   }) {
     return started?.call(this);
   }
@@ -162,7 +212,6 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,139 +221,38 @@ class _$StartedImpl implements Started {
   }
 }
 
-abstract class Started implements ProfileEvent {
-  const factory Started() = _$StartedImpl;
+abstract class Started implements AlbumEvent {
+  const factory Started({required final Album album}) = _$StartedImpl;
+
+  @override
+  Album get album;
+  @override
+  @JsonKey(ignore: true)
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SignOutImplCopyWith<$Res> {
-  factory _$$SignOutImplCopyWith(
-          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
-      __$$SignOutImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SignOutImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$SignOutImpl>
-    implements _$$SignOutImplCopyWith<$Res> {
-  __$$SignOutImplCopyWithImpl(
-      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SignOutImpl implements SignOut {
-  const _$SignOutImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.signOut()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignOutImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() signOut,
-  }) {
-    return signOut();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? signOut,
-  }) {
-    return signOut?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? signOut,
-    required TResult orElse(),
-  }) {
-    if (signOut != null) {
-      return signOut();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(SignOut value) signOut,
-  }) {
-    return signOut(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(SignOut value)? signOut,
-  }) {
-    return signOut?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(SignOut value)? signOut,
-    required TResult orElse(),
-  }) {
-    if (signOut != null) {
-      return signOut(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SignOut implements ProfileEvent {
-  const factory SignOut() = _$SignOutImpl;
-}
-
-/// @nodoc
-mixin _$ProfileState {
+mixin _$AlbumState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
-        loaded,
+    required TResult Function(List<Review>? reviews) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult? Function(List<Review>? reviews)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult Function(List<Review>? reviews)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -333,16 +281,16 @@ mixin _$ProfileState {
 }
 
 /// @nodoc
-abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
-      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+abstract class $AlbumStateCopyWith<$Res> {
+  factory $AlbumStateCopyWith(
+          AlbumState value, $Res Function(AlbumState) then) =
+      _$AlbumStateCopyWithImpl<$Res, AlbumState>;
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
-    implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._value, this._then);
+class _$AlbumStateCopyWithImpl<$Res, $Val extends AlbumState>
+    implements $AlbumStateCopyWith<$Res> {
+  _$AlbumStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -359,7 +307,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$AlbumStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -373,7 +321,7 @@ class _$InitialImpl implements Initial {
 
   @override
   String toString() {
-    return 'ProfileState.initial()';
+    return 'AlbumState.initial()';
   }
 
   @override
@@ -390,9 +338,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
-        loaded,
+    required TResult Function(List<Review>? reviews) loaded,
   }) {
     return initial();
   }
@@ -402,9 +348,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult? Function(List<Review>? reviews)? loaded,
   }) {
     return initial?.call();
   }
@@ -414,9 +358,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult Function(List<Review>? reviews)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -460,7 +402,7 @@ class _$InitialImpl implements Initial {
   }
 }
 
-abstract class Initial implements ProfileState {
+abstract class Initial implements AlbumState {
   const factory Initial() = _$InitialImpl;
 }
 
@@ -473,7 +415,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$AlbumStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -487,7 +429,7 @@ class _$LoadingImpl implements Loading {
 
   @override
   String toString() {
-    return 'ProfileState.loading()';
+    return 'AlbumState.loading()';
   }
 
   @override
@@ -504,9 +446,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
-        loaded,
+    required TResult Function(List<Review>? reviews) loaded,
   }) {
     return loading();
   }
@@ -516,9 +456,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult? Function(List<Review>? reviews)? loaded,
   }) {
     return loading?.call();
   }
@@ -528,9 +466,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult Function(List<Review>? reviews)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -574,7 +510,7 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements ProfileState {
+abstract class Loading implements AlbumState {
   const factory Loading() = _$LoadingImpl;
 }
 
@@ -584,14 +520,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel user, List<Review> reviews, List<Album> listenedAlbums});
-
-  $UserModelCopyWith<$Res> get user;
+  $Res call({List<Review>? reviews});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$AlbumStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -600,64 +534,35 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
-    Object? reviews = null,
-    Object? listenedAlbums = null,
+    Object? reviews = freezed,
   }) {
     return _then(_$LoadedImpl(
-      null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-      null == reviews
+      reviews: freezed == reviews
           ? _value._reviews
           : reviews // ignore: cast_nullable_to_non_nullable
-              as List<Review>,
-      null == listenedAlbums
-          ? _value._listenedAlbums
-          : listenedAlbums // ignore: cast_nullable_to_non_nullable
-              as List<Album>,
+              as List<Review>?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get user {
-    return $UserModelCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(
-      this.user, final List<Review> reviews, final List<Album> listenedAlbums)
-      : _reviews = reviews,
-        _listenedAlbums = listenedAlbums;
+  const _$LoadedImpl({final List<Review>? reviews}) : _reviews = reviews;
 
+  final List<Review>? _reviews;
   @override
-  final UserModel user;
-  final List<Review> _reviews;
-  @override
-  List<Review> get reviews {
+  List<Review>? get reviews {
+    final value = _reviews;
+    if (value == null) return null;
     if (_reviews is EqualUnmodifiableListView) return _reviews;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_reviews);
-  }
-
-  final List<Album> _listenedAlbums;
-  @override
-  List<Album> get listenedAlbums {
-    if (_listenedAlbums is EqualUnmodifiableListView) return _listenedAlbums;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listenedAlbums);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'ProfileState.loaded(user: $user, reviews: $reviews, listenedAlbums: $listenedAlbums)';
+    return 'AlbumState.loaded(reviews: $reviews)';
   }
 
   @override
@@ -665,18 +570,12 @@ class _$LoadedImpl implements Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.user, user) || other.user == user) &&
-            const DeepCollectionEquality().equals(other._reviews, _reviews) &&
-            const DeepCollectionEquality()
-                .equals(other._listenedAlbums, _listenedAlbums));
+            const DeepCollectionEquality().equals(other._reviews, _reviews));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      user,
-      const DeepCollectionEquality().hash(_reviews),
-      const DeepCollectionEquality().hash(_listenedAlbums));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_reviews));
 
   @JsonKey(ignore: true)
   @override
@@ -689,11 +588,9 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)
-        loaded,
+    required TResult Function(List<Review>? reviews) loaded,
   }) {
-    return loaded(user, reviews, listenedAlbums);
+    return loaded(reviews);
   }
 
   @override
@@ -701,11 +598,9 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult? Function(List<Review>? reviews)? loaded,
   }) {
-    return loaded?.call(user, reviews, listenedAlbums);
+    return loaded?.call(reviews);
   }
 
   @override
@@ -713,13 +608,11 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            UserModel user, List<Review> reviews, List<Album> listenedAlbums)?
-        loaded,
+    TResult Function(List<Review>? reviews)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user, reviews, listenedAlbums);
+      return loaded(reviews);
     }
     return orElse();
   }
@@ -759,192 +652,103 @@ class _$LoadedImpl implements Loaded {
   }
 }
 
-abstract class Loaded implements ProfileState {
-  const factory Loaded(final UserModel user, final List<Review> reviews,
-      final List<Album> listenedAlbums) = _$LoadedImpl;
+abstract class Loaded implements AlbumState {
+  const factory Loaded({final List<Review>? reviews}) = _$LoadedImpl;
 
-  UserModel get user;
-  List<Review> get reviews;
-  List<Album> get listenedAlbums;
+  List<Review>? get reviews;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ProfileCommand {
+mixin _$AlbumCommand {
+  String get error => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() navToStartPage,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToStartPage,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToStartPage,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NavToStartPage value) navToStartPage,
     required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToStartPage value)? navToStartPage,
     TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToStartPage value)? navToStartPage,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AlbumCommandCopyWith<AlbumCommand> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileCommandCopyWith<$Res> {
-  factory $ProfileCommandCopyWith(
-          ProfileCommand value, $Res Function(ProfileCommand) then) =
-      _$ProfileCommandCopyWithImpl<$Res, ProfileCommand>;
+abstract class $AlbumCommandCopyWith<$Res> {
+  factory $AlbumCommandCopyWith(
+          AlbumCommand value, $Res Function(AlbumCommand) then) =
+      _$AlbumCommandCopyWithImpl<$Res, AlbumCommand>;
+  @useResult
+  $Res call({String error});
 }
 
 /// @nodoc
-class _$ProfileCommandCopyWithImpl<$Res, $Val extends ProfileCommand>
-    implements $ProfileCommandCopyWith<$Res> {
-  _$ProfileCommandCopyWithImpl(this._value, this._then);
+class _$AlbumCommandCopyWithImpl<$Res, $Val extends AlbumCommand>
+    implements $AlbumCommandCopyWith<$Res> {
+  _$AlbumCommandCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_value.copyWith(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$NavToStartPageImplCopyWith<$Res> {
-  factory _$$NavToStartPageImplCopyWith(_$NavToStartPageImpl value,
-          $Res Function(_$NavToStartPageImpl) then) =
-      __$$NavToStartPageImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$NavToStartPageImplCopyWithImpl<$Res>
-    extends _$ProfileCommandCopyWithImpl<$Res, _$NavToStartPageImpl>
-    implements _$$NavToStartPageImplCopyWith<$Res> {
-  __$$NavToStartPageImplCopyWithImpl(
-      _$NavToStartPageImpl _value, $Res Function(_$NavToStartPageImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$NavToStartPageImpl implements NavToStartPage {
-  const _$NavToStartPageImpl();
-
-  @override
-  String toString() {
-    return 'ProfileCommand.navToStartPage()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NavToStartPageImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() navToStartPage,
-    required TResult Function(String error) error,
-  }) {
-    return navToStartPage();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToStartPage,
-    TResult? Function(String error)? error,
-  }) {
-    return navToStartPage?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToStartPage,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (navToStartPage != null) {
-      return navToStartPage();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NavToStartPage value) navToStartPage,
-    required TResult Function(Error value) error,
-  }) {
-    return navToStartPage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToStartPage value)? navToStartPage,
-    TResult? Function(Error value)? error,
-  }) {
-    return navToStartPage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToStartPage value)? navToStartPage,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (navToStartPage != null) {
-      return navToStartPage(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NavToStartPage implements ProfileCommand {
-  const factory NavToStartPage() = _$NavToStartPageImpl;
-}
-
-/// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
+abstract class _$$ErrorImplCopyWith<$Res>
+    implements $AlbumCommandCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$ProfileCommandCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$AlbumCommandCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -974,7 +778,7 @@ class _$ErrorImpl implements Error {
 
   @override
   String toString() {
-    return 'ProfileCommand.error(error: $error)';
+    return 'AlbumCommand.error(error: $error)';
   }
 
   @override
@@ -997,7 +801,6 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() navToStartPage,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -1006,7 +809,6 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? navToStartPage,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -1015,7 +817,6 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? navToStartPage,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1028,7 +829,6 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NavToStartPage value) navToStartPage,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -1037,7 +837,6 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NavToStartPage value)? navToStartPage,
     TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -1046,7 +845,6 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NavToStartPage value)? navToStartPage,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -1057,10 +855,12 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements ProfileCommand {
+abstract class Error implements AlbumCommand {
   const factory Error({required final String error}) = _$ErrorImpl;
 
+  @override
   String get error;
+  @override
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

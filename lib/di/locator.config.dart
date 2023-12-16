@@ -26,13 +26,14 @@ import '../domain/repositories/auth_repository.dart' as _i16;
 import '../domain/repositories/review_repository.dart' as _i21;
 import '../domain/repositories/snackbar_manager.dart' as _i7;
 import '../domain/repositories/user_repository.dart' as _i10;
+import '../presentation/pages/album_page/bloc/album_bloc.dart' as _i25;
 import '../presentation/pages/main_page/bloc/main_bloc.dart' as _i19;
 import '../presentation/pages/profile_page/bloc/profile_bloc.dart' as _i20;
 import '../presentation/pages/rate_album_page/bloc/rate_album_bloc.dart'
-    as _i25;
+    as _i26;
 import '../presentation/pages/sign_in_page/bloc/sign_in_bloc.dart' as _i23;
 import '../presentation/pages/sign_up_page/bloc/sign_up_bloc.dart' as _i24;
-import 'app_module.dart' as _i26; // ignore_for_file: unnecessary_lambdas
+import 'app_module.dart' as _i27; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -90,7 +91,11 @@ _i1.GetIt $initGetIt(
       () => _i23.SignInBloc(get<_i16.AuthRepository>()));
   gh.factory<_i24.SignUpBloc>(
       () => _i24.SignUpBloc(get<_i16.AuthRepository>()));
-  gh.factory<_i25.RateAlbumBloc>(() => _i25.RateAlbumBloc(
+  gh.factory<_i25.AlbumBloc>(() => _i25.AlbumBloc(
+        get<_i21.ReviewRepository>(),
+        get<_i10.UserRepository>(),
+      ));
+  gh.factory<_i26.RateAlbumBloc>(() => _i26.RateAlbumBloc(
         get<_i21.ReviewRepository>(),
         get<_i10.UserRepository>(),
         get<_i13.AlbumRepository>(),
@@ -98,4 +103,4 @@ _i1.GetIt $initGetIt(
   return get;
 }
 
-class _$AppModule extends _i26.AppModule {}
+class _$AppModule extends _i27.AppModule {}

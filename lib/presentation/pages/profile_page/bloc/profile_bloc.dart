@@ -54,7 +54,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
       emit(ProfileState.loaded(currentUser, reviews, sortedListenedAlbums));
     } catch (e) {
       log('Error in profile bloc: $e');
-      produceSideEffect(const ProfileCommand.error());
+      produceSideEffect(
+          ProfileCommand.error(error: 'Profile page error: ${e.toString()}'));
     }
   }
 
@@ -67,7 +68,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
       produceSideEffect(const ProfileCommand.navToStartPage());
     } catch (e) {
       log('Error in profile bloc: $e');
-      produceSideEffect(const ProfileCommand.error());
+      produceSideEffect(
+          ProfileCommand.error(error: 'Profile page error: ${e.toString()}'));
     }
   }
 }

@@ -30,9 +30,9 @@ class MainPage extends StatelessWidget {
               context.router.push(const InfoRoute());
             },
             navToNext: () {},
-            error: () {
-              const snackBar = SnackBar(
-                content: Text('Error on main page'),
+            error: (error) {
+              final snackBar = SnackBar(
+                content: Text(error),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },

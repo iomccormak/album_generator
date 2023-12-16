@@ -38,7 +38,8 @@ class MainBloc extends Bloc<MainEvent, MainState>
       emit(MainState.loaded(user, album));
     } catch (e) {
       log('Error in main bloc: $e');
-      produceSideEffect(const MainCommand.error());
+      produceSideEffect(
+          MainCommand.error(error: 'Main page error: ${e.toString()}'));
     }
   }
 
@@ -53,7 +54,8 @@ class MainBloc extends Bloc<MainEvent, MainState>
       emit(MainState.loaded(UserModel.getEmpty(), album!));
     } catch (e) {
       log('Error in main bloc: $e');
-      produceSideEffect(const MainCommand.error());
+      produceSideEffect(
+          MainCommand.error(error: 'Main page error: ${e.toString()}'));
     }
   }
 }
