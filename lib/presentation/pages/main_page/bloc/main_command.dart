@@ -6,6 +6,6 @@ class MainCommand with _$MainCommand {
   const factory MainCommand.navToSettings() = NavToSettings;
   const factory MainCommand.navToNext() = NavToNext;
   const factory MainCommand.error({
-    required String error,
+    required AppException error,
   }) = Error;
 }

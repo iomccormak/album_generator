@@ -1,3 +1,4 @@
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/domain/enitites/review/review.dart';
 import 'package:album_generator/domain/repositories/album_repository.dart';
 import 'package:album_generator/domain/repositories/review_repository.dart';
@@ -48,11 +49,12 @@ class RateAlbumBloc extends Bloc<RateAlbumEvent, RateAlbumState>
         await _albumRepository.updateAlbumRating(event.albumId, event.rating);
         produceSideEffect(const RateAlbumCommand.navToNextAlbum());
       } else {
-        produceSideEffect(
-            const RateAlbumCommand.error(error: 'You must rate this album'));
+        final exception = AppException('You must rate this album');
+        produceSideEffect(RateAlbumCommand.error(error: exception));
       }
     } catch (e) {
-      produceSideEffect(const RateAlbumCommand.error(error: 'error'));
+      final exception = AppException(e);
+      produceSideEffect(RateAlbumCommand.error(error: exception));
     }
   }
 

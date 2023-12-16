@@ -4,6 +4,6 @@ part of 'profile_bloc.dart';
 class ProfileCommand with _$ProfileCommand {
   const factory ProfileCommand.navToStartPage() = NavToStartPage;
   const factory ProfileCommand.error({
-    required String error,
+    required AppException error,
   }) = Error;
 }

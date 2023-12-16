@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/domain/repositories/album_repository.dart';
 import 'package:album_generator/domain/repositories/user_repository.dart';
@@ -38,8 +39,8 @@ class MainBloc extends Bloc<MainEvent, MainState>
       emit(MainState.loaded(user, album));
     } catch (e) {
       log('Error in main bloc: $e');
-      produceSideEffect(
-          MainCommand.error(error: 'Main page error: ${e.toString()}'));
+      final exception = AppException(e);
+      produceSideEffect(MainCommand.error(error: exception));
     }
   }
 
@@ -54,8 +55,8 @@ class MainBloc extends Bloc<MainEvent, MainState>
       emit(MainState.loaded(UserModel.getEmpty(), album!));
     } catch (e) {
       log('Error in main bloc: $e');
-      produceSideEffect(
-          MainCommand.error(error: 'Main page error: ${e.toString()}'));
+      final exception = AppException(e);
+      produceSideEffect(MainCommand.error(error: exception));
     }
   }
 }

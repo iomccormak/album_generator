@@ -1,4 +1,5 @@
 import 'package:album_generator/di/locator.dart';
+import 'package:album_generator/domain/enitites/errors/error_handler.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/profile_page/bloc/profile_bloc.dart';
 import 'package:album_generator/presentation/pages/profile_page/widgets/listened_album_card.dart';
@@ -26,12 +27,7 @@ class ProfilePage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToStartPage: () => context.router.push(const StartRoute()),
-            error: (error) {
-              final snackBar = SnackBar(
-                content: Text(error),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
+            error: (error) => context.showErrorSnackBar(error),
           );
         },
         builder: (context, state) {

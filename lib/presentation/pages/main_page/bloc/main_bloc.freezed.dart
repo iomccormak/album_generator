@@ -737,7 +737,7 @@ mixin _$MainCommand {
     required TResult Function() navToProfile,
     required TResult Function() navToSettings,
     required TResult Function() navToNext,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -745,7 +745,7 @@ mixin _$MainCommand {
     TResult? Function()? navToProfile,
     TResult? Function()? navToSettings,
     TResult? Function()? navToNext,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -753,7 +753,7 @@ mixin _$MainCommand {
     TResult Function()? navToProfile,
     TResult Function()? navToSettings,
     TResult Function()? navToNext,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -843,7 +843,7 @@ class _$NavToProfileImpl implements NavToProfile {
     required TResult Function() navToProfile,
     required TResult Function() navToSettings,
     required TResult Function() navToNext,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return navToProfile();
   }
@@ -854,7 +854,7 @@ class _$NavToProfileImpl implements NavToProfile {
     TResult? Function()? navToProfile,
     TResult? Function()? navToSettings,
     TResult? Function()? navToNext,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return navToProfile?.call();
   }
@@ -865,7 +865,7 @@ class _$NavToProfileImpl implements NavToProfile {
     TResult Function()? navToProfile,
     TResult Function()? navToSettings,
     TResult Function()? navToNext,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (navToProfile != null) {
@@ -957,7 +957,7 @@ class _$NavToSettingsImpl implements NavToSettings {
     required TResult Function() navToProfile,
     required TResult Function() navToSettings,
     required TResult Function() navToNext,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return navToSettings();
   }
@@ -968,7 +968,7 @@ class _$NavToSettingsImpl implements NavToSettings {
     TResult? Function()? navToProfile,
     TResult? Function()? navToSettings,
     TResult? Function()? navToNext,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return navToSettings?.call();
   }
@@ -979,7 +979,7 @@ class _$NavToSettingsImpl implements NavToSettings {
     TResult Function()? navToProfile,
     TResult Function()? navToSettings,
     TResult Function()? navToNext,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (navToSettings != null) {
@@ -1071,7 +1071,7 @@ class _$NavToNextImpl implements NavToNext {
     required TResult Function() navToProfile,
     required TResult Function() navToSettings,
     required TResult Function() navToNext,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return navToNext();
   }
@@ -1082,7 +1082,7 @@ class _$NavToNextImpl implements NavToNext {
     TResult? Function()? navToProfile,
     TResult? Function()? navToSettings,
     TResult? Function()? navToNext,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return navToNext?.call();
   }
@@ -1093,7 +1093,7 @@ class _$NavToNextImpl implements NavToNext {
     TResult Function()? navToProfile,
     TResult Function()? navToSettings,
     TResult Function()? navToNext,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (navToNext != null) {
@@ -1150,7 +1150,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({AppException error});
 }
 
 /// @nodoc
@@ -1170,7 +1170,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppException,
     ));
   }
 }
@@ -1181,7 +1181,7 @@ class _$ErrorImpl implements Error {
   const _$ErrorImpl({required this.error});
 
   @override
-  final String error;
+  final AppException error;
 
   @override
   String toString() {
@@ -1211,7 +1211,7 @@ class _$ErrorImpl implements Error {
     required TResult Function() navToProfile,
     required TResult Function() navToSettings,
     required TResult Function() navToNext,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return error(this.error);
   }
@@ -1222,7 +1222,7 @@ class _$ErrorImpl implements Error {
     TResult? Function()? navToProfile,
     TResult? Function()? navToSettings,
     TResult? Function()? navToNext,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -1233,7 +1233,7 @@ class _$ErrorImpl implements Error {
     TResult Function()? navToProfile,
     TResult Function()? navToSettings,
     TResult Function()? navToNext,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1281,9 +1281,9 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements MainCommand {
-  const factory Error({required final String error}) = _$ErrorImpl;
+  const factory Error({required final AppException error}) = _$ErrorImpl;
 
-  String get error;
+  AppException get error;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

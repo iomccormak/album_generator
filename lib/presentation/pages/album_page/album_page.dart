@@ -1,5 +1,6 @@
 import 'package:album_generator/di/locator.dart';
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/album_page/bloc/album_bloc.dart';
 import 'package:album_generator/presentation/pages/album_page/widgets/review_card.dart';
@@ -30,7 +31,7 @@ class AlbumPage extends StatelessWidget {
           sideEffect.when(
             error: (error) {
               final snackBar = SnackBar(
-                content: Text(error),
+                content: Text(error.getErrorText()),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },

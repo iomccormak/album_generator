@@ -1,5 +1,6 @@
 import 'package:album_generator/di/locator.dart';
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/errors/error_handler.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/rate_album_page/bloc/rate_album_bloc.dart';
@@ -36,12 +37,7 @@ class RateAlbumPage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToNextAlbum: () => context.router.push(const MainRoute()),
-            error: (error) {
-              final snackBar = SnackBar(
-                content: Text(error),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
+            error: (error) => context.showErrorSnackBar(error),
           );
         },
         builder: (context, state) {
@@ -65,7 +61,7 @@ class RateAlbumPage extends StatelessWidget {
               ),
               body: state is Initial
                   ? Center(
-                    child: Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -111,7 +107,8 @@ class RateAlbumPage extends StatelessWidget {
                                           rating: rated,
                                           authorId: user.id,
                                           albumId: album.id,
-                                          description: descriptionController.text,
+                                          description:
+                                              descriptionController.text,
                                         ),
                                       );
                                 },
@@ -144,7 +141,7 @@ class RateAlbumPage extends StatelessWidget {
                           ).paddingOnly(bottom: 30.h),
                         ],
                       ).paddingSymmetric(horizontal: 30.w),
-                  )
+                    )
                   : const Center(
                       child: CircularProgressIndicator(
                         color: Colors.blue,

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/domain/enitites/review/review.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/domain/repositories/album_repository.dart';
@@ -48,8 +49,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
       emit(ProfileState.loaded(currentUser, reviews));
     } catch (e) {
       log('Error in profile bloc: $e');
-      produceSideEffect(
-          ProfileCommand.error(error: 'Profile page error: ${e.toString()}'));
+      final exception = AppException(e);
+      produceSideEffect(ProfileCommand.error(error: exception));
     }
   }
 
@@ -62,8 +63,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState>
       produceSideEffect(const ProfileCommand.navToStartPage());
     } catch (e) {
       log('Error in profile bloc: $e');
-      produceSideEffect(
-          ProfileCommand.error(error: 'Profile page error: ${e.toString()}'));
+      final exception = AppException(e);
+      produceSideEffect(ProfileCommand.error(error: exception));
     }
   }
 }

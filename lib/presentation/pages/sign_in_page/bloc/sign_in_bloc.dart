@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/domain/repositories/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,7 +28,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState>
   ) async {
     emit(const SignInState.loading());
     try {
-      if (event.email.isNotEmpty) {
+      if (event.email.isNotEmpty && event.password.isNotEmpty) {
         await _authRepository.emailSignIn(
           event.email,
           event.password,
@@ -33,11 +36,18 @@ class SignInBloc extends Bloc<SignInEvent, SignInState>
         produceSideEffect(const SignInCommand.navToHomePage());
       } else {
         emit(const SignInState.initial());
-        produceSideEffect(const SignInCommand.validator());
+        final exception = AppException('Enter valid values');
+        produceSideEffect(SignInCommand.validateEnteredValues(
+          error: exception,
+        ));
       }
     } on FirebaseAuthException catch (e) {
+      log(e.code);
       emit(const SignInState.initial());
-      produceSideEffect(SignInCommand.error(error: e.toString()));
+      final exception = AppException(e);
+      produceSideEffect(SignInCommand.validateFirebaseAuth(
+        error: exception,
+      ));
     }
   }
 }

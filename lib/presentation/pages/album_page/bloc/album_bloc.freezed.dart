@@ -663,20 +663,20 @@ abstract class Loaded implements AlbumState {
 
 /// @nodoc
 mixin _$AlbumCommand {
-  String get error => throw _privateConstructorUsedError;
+  AppException get error => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -708,7 +708,7 @@ abstract class $AlbumCommandCopyWith<$Res> {
           AlbumCommand value, $Res Function(AlbumCommand) then) =
       _$AlbumCommandCopyWithImpl<$Res, AlbumCommand>;
   @useResult
-  $Res call({String error});
+  $Res call({AppException error});
 }
 
 /// @nodoc
@@ -730,7 +730,7 @@ class _$AlbumCommandCopyWithImpl<$Res, $Val extends AlbumCommand>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppException,
     ) as $Val);
   }
 }
@@ -743,7 +743,7 @@ abstract class _$$ErrorImplCopyWith<$Res>
       __$$ErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String error});
+  $Res call({AppException error});
 }
 
 /// @nodoc
@@ -763,7 +763,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppException,
     ));
   }
 }
@@ -774,7 +774,7 @@ class _$ErrorImpl implements Error {
   const _$ErrorImpl({required this.error});
 
   @override
-  final String error;
+  final AppException error;
 
   @override
   String toString() {
@@ -801,7 +801,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return error(this.error);
   }
@@ -809,7 +809,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -817,7 +817,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -856,10 +856,10 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements AlbumCommand {
-  const factory Error({required final String error}) = _$ErrorImpl;
+  const factory Error({required final AppException error}) = _$ErrorImpl;
 
   @override
-  String get error;
+  AppException get error;
   @override
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

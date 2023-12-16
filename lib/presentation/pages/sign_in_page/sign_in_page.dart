@@ -1,4 +1,5 @@
 import 'package:album_generator/di/locator.dart';
+import 'package:album_generator/domain/enitites/errors/error_handler.dart';
 import 'package:album_generator/navigation/auto_router.gr.dart';
 import 'package:album_generator/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
 import 'package:album_generator/presentation/widgets/app_text_field.dart';
@@ -27,18 +28,11 @@ class SignInPage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToHomePage: () => context.router.push(const MainRoute()),
-            validator: () {
-              const snackBar = SnackBar(
-                content: Text('Enter valid values'),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
-            error: (error) {
-              final snackBar = SnackBar(
-                content: Text(error.formatFirebaseError()),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
+            validateEnteredValues: (error) =>
+                context.showCustomErrorSnackbar(error),
+            validateFirebaseAuth: (error) =>
+                context.showFirebaseErrorSnackbar(error),
+            error: (error) => context.showErrorSnackBar(error),
           );
         },
         builder: (context, state) {

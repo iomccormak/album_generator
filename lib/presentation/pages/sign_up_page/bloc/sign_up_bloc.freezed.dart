@@ -562,43 +562,50 @@ mixin _$SignUpCommand {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToHomePage,
-    required TResult Function() validator,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) validateEnteredValues,
+    required TResult Function(AppException error) validateFirebaseAuth,
+    required TResult Function(AppException error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToHomePage,
-    TResult? Function()? validator,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? validateEnteredValues,
+    TResult? Function(AppException error)? validateFirebaseAuth,
+    TResult? Function(AppException error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToHomePage,
-    TResult Function()? validator,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? validateEnteredValues,
+    TResult Function(AppException error)? validateFirebaseAuth,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavToHomePage value) navToHomePage,
-    required TResult Function(Validator value) validator,
+    required TResult Function(ValidateEnteredValues value)
+        validateEnteredValues,
+    required TResult Function(ValidateFirebaseAuth value) validateFirebaseAuth,
     required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavToHomePage value)? navToHomePage,
-    TResult? Function(Validator value)? validator,
+    TResult? Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult? Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavToHomePage value)? navToHomePage,
-    TResult Function(Validator value)? validator,
+    TResult Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
@@ -662,8 +669,9 @@ class _$NavToHomePageImpl implements NavToHomePage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToHomePage,
-    required TResult Function() validator,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) validateEnteredValues,
+    required TResult Function(AppException error) validateFirebaseAuth,
+    required TResult Function(AppException error) error,
   }) {
     return navToHomePage();
   }
@@ -672,8 +680,9 @@ class _$NavToHomePageImpl implements NavToHomePage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToHomePage,
-    TResult? Function()? validator,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? validateEnteredValues,
+    TResult? Function(AppException error)? validateFirebaseAuth,
+    TResult? Function(AppException error)? error,
   }) {
     return navToHomePage?.call();
   }
@@ -682,8 +691,9 @@ class _$NavToHomePageImpl implements NavToHomePage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToHomePage,
-    TResult Function()? validator,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? validateEnteredValues,
+    TResult Function(AppException error)? validateFirebaseAuth,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (navToHomePage != null) {
@@ -696,7 +706,9 @@ class _$NavToHomePageImpl implements NavToHomePage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavToHomePage value) navToHomePage,
-    required TResult Function(Validator value) validator,
+    required TResult Function(ValidateEnteredValues value)
+        validateEnteredValues,
+    required TResult Function(ValidateFirebaseAuth value) validateFirebaseAuth,
     required TResult Function(Error value) error,
   }) {
     return navToHomePage(this);
@@ -706,7 +718,8 @@ class _$NavToHomePageImpl implements NavToHomePage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavToHomePage value)? navToHomePage,
-    TResult? Function(Validator value)? validator,
+    TResult? Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult? Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult? Function(Error value)? error,
   }) {
     return navToHomePage?.call(this);
@@ -716,7 +729,8 @@ class _$NavToHomePageImpl implements NavToHomePage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavToHomePage value)? navToHomePage,
-    TResult Function(Validator value)? validator,
+    TResult Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -732,70 +746,101 @@ abstract class NavToHomePage implements SignUpCommand {
 }
 
 /// @nodoc
-abstract class _$$ValidatorImplCopyWith<$Res> {
-  factory _$$ValidatorImplCopyWith(
-          _$ValidatorImpl value, $Res Function(_$ValidatorImpl) then) =
-      __$$ValidatorImplCopyWithImpl<$Res>;
+abstract class _$$ValidateEnteredValuesImplCopyWith<$Res> {
+  factory _$$ValidateEnteredValuesImplCopyWith(
+          _$ValidateEnteredValuesImpl value,
+          $Res Function(_$ValidateEnteredValuesImpl) then) =
+      __$$ValidateEnteredValuesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppException error});
 }
 
 /// @nodoc
-class __$$ValidatorImplCopyWithImpl<$Res>
-    extends _$SignUpCommandCopyWithImpl<$Res, _$ValidatorImpl>
-    implements _$$ValidatorImplCopyWith<$Res> {
-  __$$ValidatorImplCopyWithImpl(
-      _$ValidatorImpl _value, $Res Function(_$ValidatorImpl) _then)
+class __$$ValidateEnteredValuesImplCopyWithImpl<$Res>
+    extends _$SignUpCommandCopyWithImpl<$Res, _$ValidateEnteredValuesImpl>
+    implements _$$ValidateEnteredValuesImplCopyWith<$Res> {
+  __$$ValidateEnteredValuesImplCopyWithImpl(_$ValidateEnteredValuesImpl _value,
+      $Res Function(_$ValidateEnteredValuesImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ValidateEnteredValuesImpl(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ValidatorImpl implements Validator {
-  const _$ValidatorImpl();
+class _$ValidateEnteredValuesImpl implements ValidateEnteredValues {
+  const _$ValidateEnteredValuesImpl({required this.error});
+
+  @override
+  final AppException error;
 
   @override
   String toString() {
-    return 'SignUpCommand.validator()';
+    return 'SignUpCommand.validateEnteredValues(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ValidatorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ValidateEnteredValuesImpl &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ValidateEnteredValuesImplCopyWith<_$ValidateEnteredValuesImpl>
+      get copyWith => __$$ValidateEnteredValuesImplCopyWithImpl<
+          _$ValidateEnteredValuesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToHomePage,
-    required TResult Function() validator,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) validateEnteredValues,
+    required TResult Function(AppException error) validateFirebaseAuth,
+    required TResult Function(AppException error) error,
   }) {
-    return validator();
+    return validateEnteredValues(this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToHomePage,
-    TResult? Function()? validator,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? validateEnteredValues,
+    TResult? Function(AppException error)? validateFirebaseAuth,
+    TResult? Function(AppException error)? error,
   }) {
-    return validator?.call();
+    return validateEnteredValues?.call(this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToHomePage,
-    TResult Function()? validator,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? validateEnteredValues,
+    TResult Function(AppException error)? validateFirebaseAuth,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
-    if (validator != null) {
-      return validator();
+    if (validateEnteredValues != null) {
+      return validateEnteredValues(this.error);
     }
     return orElse();
   }
@@ -804,39 +849,198 @@ class _$ValidatorImpl implements Validator {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavToHomePage value) navToHomePage,
-    required TResult Function(Validator value) validator,
+    required TResult Function(ValidateEnteredValues value)
+        validateEnteredValues,
+    required TResult Function(ValidateFirebaseAuth value) validateFirebaseAuth,
     required TResult Function(Error value) error,
   }) {
-    return validator(this);
+    return validateEnteredValues(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavToHomePage value)? navToHomePage,
-    TResult? Function(Validator value)? validator,
+    TResult? Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult? Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult? Function(Error value)? error,
   }) {
-    return validator?.call(this);
+    return validateEnteredValues?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavToHomePage value)? navToHomePage,
-    TResult Function(Validator value)? validator,
+    TResult Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
-    if (validator != null) {
-      return validator(this);
+    if (validateEnteredValues != null) {
+      return validateEnteredValues(this);
     }
     return orElse();
   }
 }
 
-abstract class Validator implements SignUpCommand {
-  const factory Validator() = _$ValidatorImpl;
+abstract class ValidateEnteredValues implements SignUpCommand {
+  const factory ValidateEnteredValues({required final AppException error}) =
+      _$ValidateEnteredValuesImpl;
+
+  AppException get error;
+  @JsonKey(ignore: true)
+  _$$ValidateEnteredValuesImplCopyWith<_$ValidateEnteredValuesImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ValidateFirebaseAuthImplCopyWith<$Res> {
+  factory _$$ValidateFirebaseAuthImplCopyWith(_$ValidateFirebaseAuthImpl value,
+          $Res Function(_$ValidateFirebaseAuthImpl) then) =
+      __$$ValidateFirebaseAuthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppException error});
+}
+
+/// @nodoc
+class __$$ValidateFirebaseAuthImplCopyWithImpl<$Res>
+    extends _$SignUpCommandCopyWithImpl<$Res, _$ValidateFirebaseAuthImpl>
+    implements _$$ValidateFirebaseAuthImplCopyWith<$Res> {
+  __$$ValidateFirebaseAuthImplCopyWithImpl(_$ValidateFirebaseAuthImpl _value,
+      $Res Function(_$ValidateFirebaseAuthImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ValidateFirebaseAuthImpl(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ValidateFirebaseAuthImpl implements ValidateFirebaseAuth {
+  const _$ValidateFirebaseAuthImpl({required this.error});
+
+  @override
+  final AppException error;
+
+  @override
+  String toString() {
+    return 'SignUpCommand.validateFirebaseAuth(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ValidateFirebaseAuthImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ValidateFirebaseAuthImplCopyWith<_$ValidateFirebaseAuthImpl>
+      get copyWith =>
+          __$$ValidateFirebaseAuthImplCopyWithImpl<_$ValidateFirebaseAuthImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() navToHomePage,
+    required TResult Function(AppException error) validateEnteredValues,
+    required TResult Function(AppException error) validateFirebaseAuth,
+    required TResult Function(AppException error) error,
+  }) {
+    return validateFirebaseAuth(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? navToHomePage,
+    TResult? Function(AppException error)? validateEnteredValues,
+    TResult? Function(AppException error)? validateFirebaseAuth,
+    TResult? Function(AppException error)? error,
+  }) {
+    return validateFirebaseAuth?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? navToHomePage,
+    TResult Function(AppException error)? validateEnteredValues,
+    TResult Function(AppException error)? validateFirebaseAuth,
+    TResult Function(AppException error)? error,
+    required TResult orElse(),
+  }) {
+    if (validateFirebaseAuth != null) {
+      return validateFirebaseAuth(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NavToHomePage value) navToHomePage,
+    required TResult Function(ValidateEnteredValues value)
+        validateEnteredValues,
+    required TResult Function(ValidateFirebaseAuth value) validateFirebaseAuth,
+    required TResult Function(Error value) error,
+  }) {
+    return validateFirebaseAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NavToHomePage value)? navToHomePage,
+    TResult? Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult? Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
+    TResult? Function(Error value)? error,
+  }) {
+    return validateFirebaseAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NavToHomePage value)? navToHomePage,
+    TResult Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (validateFirebaseAuth != null) {
+      return validateFirebaseAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ValidateFirebaseAuth implements SignUpCommand {
+  const factory ValidateFirebaseAuth({required final AppException error}) =
+      _$ValidateFirebaseAuthImpl;
+
+  AppException get error;
+  @JsonKey(ignore: true)
+  _$$ValidateFirebaseAuthImplCopyWith<_$ValidateFirebaseAuthImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -845,7 +1049,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({AppException error});
 }
 
 /// @nodoc
@@ -865,7 +1069,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppException,
     ));
   }
 }
@@ -876,7 +1080,7 @@ class _$ErrorImpl implements Error {
   const _$ErrorImpl({required this.error});
 
   @override
-  final String error;
+  final AppException error;
 
   @override
   String toString() {
@@ -904,8 +1108,9 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToHomePage,
-    required TResult Function() validator,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) validateEnteredValues,
+    required TResult Function(AppException error) validateFirebaseAuth,
+    required TResult Function(AppException error) error,
   }) {
     return error(this.error);
   }
@@ -914,8 +1119,9 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToHomePage,
-    TResult? Function()? validator,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? validateEnteredValues,
+    TResult? Function(AppException error)? validateFirebaseAuth,
+    TResult? Function(AppException error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -924,8 +1130,9 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToHomePage,
-    TResult Function()? validator,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? validateEnteredValues,
+    TResult Function(AppException error)? validateFirebaseAuth,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -938,7 +1145,9 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavToHomePage value) navToHomePage,
-    required TResult Function(Validator value) validator,
+    required TResult Function(ValidateEnteredValues value)
+        validateEnteredValues,
+    required TResult Function(ValidateFirebaseAuth value) validateFirebaseAuth,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -948,7 +1157,8 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavToHomePage value)? navToHomePage,
-    TResult? Function(Validator value)? validator,
+    TResult? Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult? Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -958,7 +1168,8 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavToHomePage value)? navToHomePage,
-    TResult Function(Validator value)? validator,
+    TResult Function(ValidateEnteredValues value)? validateEnteredValues,
+    TResult Function(ValidateFirebaseAuth value)? validateFirebaseAuth,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -970,9 +1181,9 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements SignUpCommand {
-  const factory Error({required final String error}) = _$ErrorImpl;
+  const factory Error({required final AppException error}) = _$ErrorImpl;
 
-  String get error;
+  AppException get error;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

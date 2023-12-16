@@ -635,19 +635,19 @@ mixin _$RateAlbumCommand {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToNextAlbum,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToNextAlbum,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToNextAlbum,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -729,7 +729,7 @@ class _$NavToNextAlbumImpl implements NavToNextAlbum {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToNextAlbum,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return navToNextAlbum();
   }
@@ -738,7 +738,7 @@ class _$NavToNextAlbumImpl implements NavToNextAlbum {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToNextAlbum,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return navToNextAlbum?.call();
   }
@@ -747,7 +747,7 @@ class _$NavToNextAlbumImpl implements NavToNextAlbum {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToNextAlbum,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (navToNextAlbum != null) {
@@ -798,7 +798,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({AppException error});
 }
 
 /// @nodoc
@@ -818,7 +818,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppException,
     ));
   }
 }
@@ -829,7 +829,7 @@ class _$ErrorImpl implements Error {
   const _$ErrorImpl({required this.error});
 
   @override
-  final String error;
+  final AppException error;
 
   @override
   String toString() {
@@ -857,7 +857,7 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() navToNextAlbum,
-    required TResult Function(String error) error,
+    required TResult Function(AppException error) error,
   }) {
     return error(this.error);
   }
@@ -866,7 +866,7 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? navToNextAlbum,
-    TResult? Function(String error)? error,
+    TResult? Function(AppException error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -875,7 +875,7 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? navToNextAlbum,
-    TResult Function(String error)? error,
+    TResult Function(AppException error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -917,9 +917,9 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements RateAlbumCommand {
-  const factory Error({required final String error}) = _$ErrorImpl;
+  const factory Error({required final AppException error}) = _$ErrorImpl;
 
-  String get error;
+  AppException get error;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

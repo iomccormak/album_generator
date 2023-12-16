@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:album_generator/domain/enitites/album/album.dart';
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/domain/enitites/review/review.dart';
 import 'package:album_generator/domain/enitites/user/user.dart';
 import 'package:album_generator/domain/repositories/review_repository.dart';
@@ -43,8 +44,8 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState>
       emit(AlbumState.loaded(reviews: reviews));
     } catch (e) {
       log('Error in album bloc: $e');
-      produceSideEffect(
-          AlbumCommand.error(error: 'Album page error: ${e.toString()}'));
+      final exception = AppException(e);
+      produceSideEffect(AlbumCommand.error(error: exception));
     }
   }
 }

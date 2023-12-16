@@ -1,4 +1,6 @@
+import 'dart:developer';
 
+import 'package:album_generator/domain/enitites/errors/app_exception.dart';
 import 'package:album_generator/domain/repositories/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,11 +40,18 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState>
         produceSideEffect(const SignUpCommand.navToHomePage());
       } else {
         emit(const SignUpState.initial());
-        produceSideEffect(const SignUpCommand.validator());
+        final exception = AppException('Enter valid values');
+        produceSideEffect(SignUpCommand.validateEnteredValues(
+          error: exception,
+        ));
       }
     } on FirebaseAuthException catch (e) {
+      log(e.code);
       emit(const SignUpState.initial());
-      produceSideEffect(SignUpCommand.error(error: e.toString()));
+      final exception = AppException(e);
+      produceSideEffect(SignUpCommand.validateFirebaseAuth(
+        error: exception,
+      ));
     }
   }
 }

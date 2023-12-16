@@ -4,6 +4,6 @@ part of 'rate_album_bloc.dart';
 class RateAlbumCommand with _$RateAlbumCommand {
   const factory RateAlbumCommand.navToNextAlbum() = NavToNextAlbum;
   const factory RateAlbumCommand.error({
-    required String error,
+    required AppException error,
   }) = Error;
 }
